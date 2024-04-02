@@ -1,12 +1,39 @@
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:perfone_api/perfone_api.dart';
+import 'package:perfone_api/src/model/agent_model.dart';
 
 void main() {
-  test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
+  setUp(() {
+    pfUseLocalhost = true;
+  });
+
+  group('Agent', () {
+    test('login', () async {
+      RspLogin rsp = await User().login(ReqLogin(
+        userId: 'admin',
+        password: 'admin',
+      ));
+      print(rsp.toJson());
+    });
+  });
+
+  group('Recorder', () {
+    //
+  });
+
+  group('Report', () {
+    //
+  });
+
+  group('Server', () {
+    //
+  });
+
+  group('Tester', () {
+    //
+  });
+
+  group('User', () {
+    //
   });
 }

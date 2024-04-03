@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'recorder_req_model.g.dart';
 
-
 @JsonSerializable()
 class ReqRecorderGetProperty {
   final String? script_name;
@@ -12,10 +11,6 @@ class ReqRecorderGetProperty {
 
   Map<String, dynamic> toJson() => _$ReqRecorderGetPropertyToJson(this);
 }
-
-
-
-
 
 @JsonSerializable()
 class ReqRecorderList {
@@ -28,7 +23,8 @@ class ReqRecorderList {
   @JsonKey(name: 'end_date')
   final String? endDate;
 
-  ReqRecorderList({this.rows, this.page, this.name, this.ip, this.startDate, this.endDate});
+  ReqRecorderList(
+      {this.rows, this.page, this.name, this.ip, this.startDate, this.endDate});
 
   Map<String, dynamic> toJson() => _$ReqRecorderListToJson(this);
 }
@@ -38,7 +34,8 @@ class ReqRecorderCreateScript {
   final String? script_name;
 
   ReqRecorderCreateScript({
-      this.script_name,});
+    this.script_name,
+  });
 
   Map<String, dynamic> toJson() => _$ReqRecorderCreateScriptToJson(this);
 }
@@ -48,10 +45,12 @@ class ReqRecorderCreateTransaction {
   final String? script_name;
   final String? transaction_name;
   final int? num;
+
   ReqRecorderCreateTransaction({
-      this.script_name,
-      this.transaction_name,
-      this.num,});
+    this.script_name,
+    this.transaction_name,
+    this.num,
+  });
 
   Map<String, dynamic> toJson() => _$ReqRecorderCreateTransactionToJson(this);
 }
@@ -65,11 +64,11 @@ class ReqRecorderStartRecording {
   final bool? websocket_session_id;
 
   ReqRecorderStartRecording({
-      this.script_name,
-      this.transaction_name,
-      this.num,
-      this.is_static_file,
-      this.websocket_session_id,
+    this.script_name,
+    this.transaction_name,
+    this.num,
+    this.is_static_file,
+    this.websocket_session_id,
   });
 
   Map<String, dynamic> toJson() => _$ReqRecorderStartRecordingToJson(this);
@@ -99,7 +98,7 @@ class ReqRecordeDeleteNode {
   final String? node_ids;
   final String? xml;
 
-  ReqRecordeDeleteNode({this.script_name,this.node_ids,this.xml});
+  ReqRecordeDeleteNode({this.script_name, this.node_ids, this.xml});
 
   Map<String, dynamic> toJson() => _$ReqRecordeDeleteNodeToJson(this);
 }
@@ -111,7 +110,8 @@ class ReqRecorderAddLoop {
   final String? loop_value;
   final String? xml;
 
-  ReqRecorderAddLoop({this.target_id,this.loop_name,this.loop_value,this.xml});
+  ReqRecorderAddLoop(
+      {this.target_id, this.loop_name, this.loop_value, this.xml});
 
   Map<String, dynamic> toJson() => _$ReqRecorderAddLoopToJson(this);
 }
@@ -122,10 +122,11 @@ class ReqRecorderAddThinkTime {
   final String? think_time;
   final String? xml;
 
-  ReqRecorderAddThinkTime({this.target_id,this.think_time,this.xml});
+  ReqRecorderAddThinkTime({this.target_id, this.think_time, this.xml});
 
   Map<String, dynamic> toJson() => _$ReqRecorderAddThinkTimeToJson(this);
 }
+
 @JsonSerializable()
 class ReqRecorderAddRdz {
   final String? script_name;
@@ -135,8 +136,13 @@ class ReqRecorderAddRdz {
   final String? timeout;
   final String? xml;
 
-  ReqRecorderAddRdz({this.script_name,this.transaction_id,this.rdz_name,
-    this.vuser,this.timeout,this.xml});
+  ReqRecorderAddRdz(
+      {this.script_name,
+      this.transaction_id,
+      this.rdz_name,
+      this.vuser,
+      this.timeout,
+      this.xml});
 
   Map<String, dynamic> toJson() => _$ReqRecorderAddRdzToJson(this);
 }
@@ -146,29 +152,35 @@ class ReqRecorderLoadScript {
   final String? script_name;
 
   ReqRecorderLoadScript({
-    this.script_name,});
+    this.script_name,
+  });
 
   Map<String, dynamic> toJson() => _$ReqRecorderLoadScriptToJson(this);
 }
+
 @JsonSerializable()
 class ReqRecorderDeleteScript {
   final String? script_name;
 
   ReqRecorderDeleteScript({
-    this.script_name,});
+    this.script_name,
+  });
 
   Map<String, dynamic> toJson() => _$ReqRecorderDeleteScriptToJson(this);
 }
+
 @JsonSerializable()
 class ReqRecorderSaveScript {
   final String? script_name;
   final String? xml;
 
-  ReqRecorderSaveScript({this.script_name,this.xml,});
+  ReqRecorderSaveScript({
+    this.script_name,
+    this.xml,
+  });
 
   Map<String, dynamic> toJson() => _$ReqRecorderSaveScriptToJson(this);
 }
-
 
 //
 // @JsonSerializable()

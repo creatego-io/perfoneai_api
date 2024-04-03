@@ -12,8 +12,8 @@ part 'user.g.dart';
 @RestApi(parser: Parser.JsonSerializable)
 abstract class User {
   factory User() => _User(
-        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.pfDisableLog),
-        baseUrl: PerfOneAIApi.pfApiEndpoint,
+        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.disableLog),
+        baseUrl: PerfOneAIApi.apiEndpoint,
       );
 
   @POST('/user/login')
@@ -42,5 +42,4 @@ abstract class User {
 
   @POST('/user/pwdReset')
   Future<RspMessage> pwdReset(@Body() ReqUserPwdReset request);
-
 }

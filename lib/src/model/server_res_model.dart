@@ -5,7 +5,6 @@ import 'common_model.dart';
 
 part 'server_res_model.g.dart';
 
-
 @JsonSerializable()
 class RspServerList extends ResData {
   ServerListRes? resultData;
@@ -16,7 +15,8 @@ class RspServerList extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspServerList.fromJson(json) {
     RspServerList res = _$RspServerListFromJson(json);
@@ -29,13 +29,13 @@ class RspServerList extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = ServerListRes.fromJson(result!);
     }
   }
 }
 
-class ServerListRes  {
+class ServerListRes {
   List<ServerModel?>? data;
   PageInfoModel? pageInfo;
 
@@ -46,18 +46,17 @@ class ServerListRes  {
 
   ServerListRes.fromJson(Map json)
       : data = json['Data'] == null
-      ? <ServerModel>[]
-      : json['Data']
-      .map<ServerModel>(
-          (json) => ServerModel.fromJson(json))
-      .toList(),
-        pageInfo= PageInfoModel.fromJson(json['pageInfo'] ?? <String, dynamic>{})
-  ;
+            ? <ServerModel>[]
+            : json['Data']
+                .map<ServerModel>((json) => ServerModel.fromJson(json))
+                .toList(),
+        pageInfo =
+            PageInfoModel.fromJson(json['pageInfo'] ?? <String, dynamic>{});
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     List list = [];
-    if(data!=null) {
+    if (data != null) {
       for (ServerModel? item in data!) {
         list.add(item?.toJson());
       }
@@ -84,7 +83,8 @@ class RspServerInfo extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspServerInfo.fromJson(json) {
     RspServerInfo res = _$RspServerInfoFromJson(json);
@@ -97,15 +97,16 @@ class RspServerInfo extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = ServerInfoRes.fromJson(result!);
     }
   }
 }
 
-class ServerInfoRes  {
+class ServerInfoRes {
   ServerModel? data;
   String? message;
+
   ServerInfoRes({
     required this.data,
     required this.message,
@@ -127,4 +128,3 @@ class ServerInfoRes  {
     return toJson().toString();
   }
 }
-

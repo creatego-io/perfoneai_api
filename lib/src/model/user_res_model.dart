@@ -15,7 +15,8 @@ class RspUserInfo extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspUserInfo.fromJson(json) {
     RspUserInfo res = _$RspUserInfoFromJson(json);
@@ -28,14 +29,13 @@ class RspUserInfo extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = LoginRes.fromJson(result!);
     }
   }
-
 }
 
-class LoginRes  {
+class LoginRes {
   UserModel? data;
 
   LoginRes({
@@ -68,7 +68,8 @@ class RspUserDuplicate extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspUserDuplicate.fromJson(json) {
     RspUserDuplicate res = _$RspUserDuplicateFromJson(json);
@@ -81,13 +82,13 @@ class RspUserDuplicate extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = DuplicateRes.fromJson(result!);
     }
   }
 }
 
-class DuplicateRes  {
+class DuplicateRes {
   String? is_duplicate;
   String? message;
 
@@ -106,13 +107,12 @@ class DuplicateRes  {
     map['message'] = message;
     return map;
   }
+
   @override
   String toString() {
     return toJson().toString();
   }
 }
-
-
 
 @JsonSerializable()
 class RspUserList extends ResData {
@@ -124,7 +124,8 @@ class RspUserList extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspUserList.fromJson(json) {
     RspUserList res = _$RspUserListFromJson(json);
@@ -137,13 +138,13 @@ class RspUserList extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = UserListRes.fromJson(result!);
     }
   }
 }
 
-class UserListRes  {
+class UserListRes {
   List<UserModel?>? data;
   PageInfoModel? pageInfo;
 
@@ -154,18 +155,17 @@ class UserListRes  {
 
   UserListRes.fromJson(Map json)
       : data = json['Data'] == null
-      ? <UserModel>[]
-      : json['Data']
-      .map<UserModel>(
-          (json) => UserModel.fromJson(json))
-      .toList(),
-        pageInfo= PageInfoModel.fromJson(json['pageInfo'] ?? <String, dynamic>{})
-  ;
+            ? <UserModel>[]
+            : json['Data']
+                .map<UserModel>((json) => UserModel.fromJson(json))
+                .toList(),
+        pageInfo =
+            PageInfoModel.fromJson(json['pageInfo'] ?? <String, dynamic>{});
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     List list = [];
-    if(data!=null) {
+    if (data != null) {
       for (UserModel? item in data!) {
         list.add(item?.toJson());
       }
@@ -175,5 +175,4 @@ class UserListRes  {
 
     return map;
   }
-
 }

@@ -3,7 +3,6 @@ import 'package:retrofit/http.dart';
 
 import '../perfone_api.dart';
 import 'dio_client_for_retrofit.dart';
-
 import 'model/common_model.dart';
 import 'model/server_req_model.dart';
 import 'model/server_res_model.dart';
@@ -13,8 +12,8 @@ part 'server.g.dart';
 @RestApi(parser: Parser.JsonSerializable)
 abstract class Server {
   factory Server() => _Server(
-        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.pfDisableLog),
-        baseUrl: PerfOneAIApi.pfApiEndpoint,
+        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.disableLog),
+        baseUrl: PerfOneAIApi.apiEndpoint,
       );
 
   @POST('/server/list')
@@ -31,5 +30,4 @@ abstract class Server {
 
   @POST('/server/delete')
   Future<RspMessage> delete(@Body() ReqServerDelete request);
-
 }

@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'server_req_model.g.dart';
 
-
 @JsonSerializable()
 class ReqServerList {
   final String? rows;
@@ -14,7 +13,8 @@ class ReqServerList {
   @JsonKey(name: 'end_date')
   final String? endDate;
 
-  ReqServerList({this.rows, this.page, this.name, this.ip, this.startDate, this.endDate});
+  ReqServerList(
+      {this.rows, this.page, this.name, this.ip, this.startDate, this.endDate});
 
   Map<String, dynamic> toJson() => _$ReqServerListToJson(this);
 }
@@ -32,9 +32,8 @@ class ReqServerCreate {
   final String? description;
   final String? update_user_id;
 
-
-  ReqServerCreate({
-      this.name,
+  ReqServerCreate(
+      {this.name,
       this.os,
       this.connect_type,
       this.type,
@@ -59,7 +58,6 @@ class ReqServerInfo {
 
 @JsonSerializable()
 class ReqServerModify {
-
   final int? id;
   final String? name;
   final String? os;
@@ -72,8 +70,8 @@ class ReqServerModify {
   final String? description;
   final String? update_user_id;
 
-  ReqServerModify({
-      this.id,
+  ReqServerModify(
+      {this.id,
       this.name,
       this.os,
       this.connect_type,
@@ -87,7 +85,6 @@ class ReqServerModify {
 
   Map<String, dynamic> toJson() => _$ReqServerModifyToJson(this);
 }
-
 
 @JsonSerializable()
 class ReqServerDelete {

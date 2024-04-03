@@ -1,9 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:perfone_api/src/model/data_set.dart';
 
-
 part 'recorder_res_model.g.dart';
-
 
 @JsonSerializable()
 class RspRecorderGetProperty extends ResData {
@@ -15,7 +13,8 @@ class RspRecorderGetProperty extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspRecorderGetProperty.fromJson(json) {
     RspRecorderGetProperty res = _$RspRecorderGetPropertyFromJson(json);
@@ -28,20 +27,19 @@ class RspRecorderGetProperty extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = RspRecorderGetPropertyRes.fromJson(result!);
     }
   }
 }
 
-
-
-class RspRecorderGetPropertyRes  {
+class RspRecorderGetPropertyRes {
   HttpRequestLineModel? httpRequestLine;
   HttpHeaderModel? httpHeader;
   HttpCookieModel? httpCookie;
   MessageBodyModel? messageBody;
   String? message;
+
   RspRecorderGetPropertyRes({
     required this.httpRequestLine,
     required this.httpHeader,
@@ -51,11 +49,14 @@ class RspRecorderGetPropertyRes  {
   });
 
   RspRecorderGetPropertyRes.fromJson(Map json)
-      :
-        httpRequestLine = HttpRequestLineModel.fromJson(json['httpRequestLine'] ?? <String, dynamic>{}),
-        httpHeader = HttpHeaderModel.fromJson(json['httpHeader'] ?? <String, dynamic>{}),
-        httpCookie = HttpCookieModel.fromJson(json['httpCookie'] ?? <String, dynamic>{}),
-        messageBody = MessageBodyModel.fromJson(json['messageBody'] ?? <String, dynamic>{}),
+      : httpRequestLine = HttpRequestLineModel.fromJson(
+            json['httpRequestLine'] ?? <String, dynamic>{}),
+        httpHeader =
+            HttpHeaderModel.fromJson(json['httpHeader'] ?? <String, dynamic>{}),
+        httpCookie =
+            HttpCookieModel.fromJson(json['httpCookie'] ?? <String, dynamic>{}),
+        messageBody = MessageBodyModel.fromJson(
+            json['messageBody'] ?? <String, dynamic>{}),
         message = json['message'];
 
   Map<String, dynamic> toJson() {
@@ -73,9 +74,6 @@ class RspRecorderGetPropertyRes  {
     return toJson().toString();
   }
 }
-
-
-
 
 @JsonSerializable()
 class HttpRequestLineModel {
@@ -127,11 +125,19 @@ class HttpHeaderModel {
   @JsonKey(name: 'Accept-Language')
   String? AcceptLanguage;
 
-
-  HttpHeaderModel({this.PORT, this.Accept, this.UserTransaction, this.Referer,
-      this.Connection, this.SecFetchDest, this.SecFetchSite,
-      this.AcceptEncoding, this.Timestamp, this.SecFetchMode,
-      this.Authorization, this.AcceptLanguage});
+  HttpHeaderModel(
+      {this.PORT,
+      this.Accept,
+      this.UserTransaction,
+      this.Referer,
+      this.Connection,
+      this.SecFetchDest,
+      this.SecFetchSite,
+      this.AcceptEncoding,
+      this.Timestamp,
+      this.SecFetchMode,
+      this.Authorization,
+      this.AcceptLanguage});
 
   factory HttpHeaderModel.fromJson(Map<String, dynamic> json) =>
       _$HttpHeaderModelFromJson(json);
@@ -147,6 +153,7 @@ class HttpHeaderModel {
 @JsonSerializable()
 class HttpCookieModel {
   String? JSESSIONID;
+
   HttpCookieModel({
     this.JSESSIONID,
   });
@@ -160,6 +167,7 @@ class HttpCookieModel {
 @JsonSerializable()
 class MessageBodyModel {
   String? PostData;
+
   MessageBodyModel({
     this.PostData,
   });
@@ -175,13 +183,12 @@ class MessageBodyModel {
   }
 }
 
-
-
-class RspRecorderTransaction  {
+class RspRecorderTransaction {
   RecordingTreeModel? tree;
   String? xml;
   String? erl;
   String? message;
+
   RspRecorderTransaction({
     required this.tree,
     required this.xml,
@@ -190,8 +197,7 @@ class RspRecorderTransaction  {
   });
 
   RspRecorderTransaction.fromJson(Map json)
-      :
-        tree = RecordingTreeModel.fromJson(json['tree'] ?? <String, dynamic>{}),
+      : tree = RecordingTreeModel.fromJson(json['tree'] ?? <String, dynamic>{}),
         xml = json['xml'],
         erl = json['erl'],
         message = json['message'];
@@ -211,7 +217,7 @@ class RspRecorderTransaction  {
   }
 }
 
-class RecordingTreeModel  {
+class RecordingTreeModel {
   String id;
   String name;
   List<TransactionModel?>? children;
@@ -224,19 +230,18 @@ class RecordingTreeModel  {
 
   RecordingTreeModel.fromJson(Map json)
       : children = json['children'] == null
-      ? <TransactionModel>[]
-      : json['children']
-      .map<TransactionModel>(
-          (json) => TransactionModel.fromJson(json))
-      .toList(),
-        id= json['id'],
-        name= json['name']
-  ;
+            ? <TransactionModel>[]
+            : json['children']
+                .map<TransactionModel>(
+                    (json) => TransactionModel.fromJson(json))
+                .toList(),
+        id = json['id'],
+        name = json['name'];
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     List list = [];
-    if(children!=null) {
+    if (children != null) {
       for (TransactionModel? item in children!) {
         list.add(item?.toJson());
       }
@@ -247,12 +252,9 @@ class RecordingTreeModel  {
 
     return map;
   }
-
 }
 
-
-
-class TransactionModel  {
+class TransactionModel {
   String id;
   String name;
   List<TransactionModel?>? children;
@@ -265,19 +267,18 @@ class TransactionModel  {
 
   TransactionModel.fromJson(Map json)
       : children = json['children'] == null
-      ? <TransactionModel>[]
-      : json['children']
-      .map<TransactionModel>(
-          (json) => TransactionModel.fromJson(json))
-      .toList(),
-        id= json['id'],
-        name= json['name']
-  ;
+            ? <TransactionModel>[]
+            : json['children']
+                .map<TransactionModel>(
+                    (json) => TransactionModel.fromJson(json))
+                .toList(),
+        id = json['id'],
+        name = json['name'];
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     List list = [];
-    if(children!=null) {
+    if (children != null) {
       for (TransactionModel? item in children!) {
         list.add(item?.toJson());
       }

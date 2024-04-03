@@ -31,7 +31,7 @@ class ReqUserJoin {
   final String? name;
   final String? company;
 
-  ReqUserJoin({this.userId, this.password,this.name, this.company});
+  ReqUserJoin({this.userId, this.password, this.name, this.company});
 
   Map<String, dynamic> toJson() => _$ReqUserJoinToJson(this);
 }
@@ -45,7 +45,6 @@ class ReqUserList {
   final String? startDate;
   @JsonKey(name: 'end_date')
   final String? endDate;
-
 
   ReqUserList({this.rows, this.page, this.name, this.startDate, this.endDate});
 
@@ -61,6 +60,7 @@ class ReqUserInfo {
 
   Map<String, dynamic> toJson() => _$ReqUserInfoToJson(this);
 }
+
 @JsonSerializable()
 class ReqUserPwdModify {
   @JsonKey(name: 'user_id')
@@ -69,10 +69,12 @@ class ReqUserPwdModify {
   final String? new_password;
   final String? update_user_id;
 
-  ReqUserPwdModify({this.userId, this.password,this.new_password, this.update_user_id});
+  ReqUserPwdModify(
+      {this.userId, this.password, this.new_password, this.update_user_id});
 
   Map<String, dynamic> toJson() => _$ReqUserPwdModifyToJson(this);
 }
+
 @JsonSerializable()
 class ReqUserInfoModify {
   @JsonKey(name: 'user_id')
@@ -81,10 +83,12 @@ class ReqUserInfoModify {
   final String? company;
   final String? update_user_id;
 
-  ReqUserInfoModify({this.userId, this.password,this.update_user_id, this.company});
+  ReqUserInfoModify(
+      {this.userId, this.password, this.update_user_id, this.company});
 
   Map<String, dynamic> toJson() => _$ReqUserInfoModifyToJson(this);
 }
+
 @JsonSerializable()
 class ReqUserDelete {
   @JsonKey(name: 'user_id')
@@ -101,7 +105,10 @@ class ReqUserPwdReset {
   final String? userId;
   final String? update_user_id;
 
-  ReqUserPwdReset({this.userId, this.update_user_id,});
+  ReqUserPwdReset({
+    this.userId,
+    this.update_user_id,
+  });
 
   Map<String, dynamic> toJson() => _$ReqUserPwdResetToJson(this);
 }

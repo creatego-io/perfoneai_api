@@ -5,16 +5,16 @@ abstract class ResData {
   num? timestamp;
   String? error;
   String? path;
+
   @override
   ResData({
     required this.status,
     required this.message,
-     this.result,
-     this.timestamp,
-     this.error,
-     this.path,
+    this.result,
+    this.timestamp,
+    this.error,
+    this.path,
   });
-
 
   ResData.fromJson(Map json)
       : status = json['status'] ?? "500",
@@ -22,8 +22,7 @@ abstract class ResData {
         result = json['result'],
         timestamp = json['timestamp'],
         error = json['error'],
-        path = json['path']
-  ;
+        path = json['path'];
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
@@ -36,7 +35,7 @@ abstract class ResData {
     return map;
   }
 
-  bool get isSuccess=> status!=200;
+  bool get isSuccess => status != 200;
 
   fromJsonResult();
 }

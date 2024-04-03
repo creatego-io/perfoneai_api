@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'report_req_model.g.dart';
 
-
 @JsonSerializable()
 class ReqReportList {
   final String? rows;
@@ -13,11 +12,11 @@ class ReqReportList {
   @JsonKey(name: 'end_date')
   final String? endDate;
 
-  ReqReportList({this.rows, this.page, this.name,  this.startDate, this.endDate});
+  ReqReportList(
+      {this.rows, this.page, this.name, this.startDate, this.endDate});
 
   Map<String, dynamic> toJson() => _$ReqReportListToJson(this);
 }
-
 
 @JsonSerializable()
 class ReqReportDownload {

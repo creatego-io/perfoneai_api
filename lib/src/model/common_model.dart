@@ -2,17 +2,14 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:perfone_api/src/model/data_set.dart';
 
 part 'common_model.g.dart';
+
 @JsonSerializable()
 class PageInfoModel {
   String? page;
   String? currentRows;
   String? totalRows;
 
-  PageInfoModel({
-    this.page,
-    this.currentRows,
-    this.totalRows
-  });
+  PageInfoModel({this.page, this.currentRows, this.totalRows});
 
   factory PageInfoModel.fromJson(Map<String, dynamic> json) =>
       _$PageInfoModelFromJson(json);
@@ -25,7 +22,6 @@ class PageInfoModel {
   }
 }
 
-
 @JsonSerializable()
 class RspMessage extends ResData {
   MessageRes? resultData;
@@ -36,7 +32,8 @@ class RspMessage extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspMessage.fromJson(json) {
     RspMessage res = _$RspMessageFromJson(json);
@@ -49,7 +46,7 @@ class RspMessage extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = MessageRes.fromJson(result!);
     }
   }
@@ -60,15 +57,14 @@ class RspMessage extends ResData {
   }
 }
 
-class MessageRes  {
+class MessageRes {
   String? message;
 
   MessageRes({
     this.message,
   });
 
-  MessageRes.fromJson(Map json)
-      : message = json['message'];
+  MessageRes.fromJson(Map json) : message = json['message'];
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
@@ -127,7 +123,6 @@ class AgentModel {
   String? update_user_id;
   String? update_datetime;
 
-
   AgentModel({
     this.id,
     this.name,
@@ -150,6 +145,7 @@ class AgentModel {
     return toJson().toString();
   }
 }
+
 @JsonSerializable()
 class ServerModel {
   num? id;
@@ -168,9 +164,8 @@ class ServerModel {
   String? update_user_id;
   String? update_datetime;
 
-
-  ServerModel({
-      this.id,
+  ServerModel(
+      {this.id,
       this.name,
       this.os,
       this.connect_type,
@@ -209,18 +204,16 @@ class ReportModel {
   String? create_datetime;
   String? file_full_path;
 
-
-  ReportModel({
-    this.id,
-    this.name,
-    this.status,
-    this.start_datetime,
-    this.end_datetime,
-    this.create_user_id,
-    this.create_user_name,
-    this.create_datetime,
-    this.file_full_path
-  });
+  ReportModel(
+      {this.id,
+      this.name,
+      this.status,
+      this.start_datetime,
+      this.end_datetime,
+      this.create_user_id,
+      this.create_user_name,
+      this.create_datetime,
+      this.file_full_path});
 
   factory ReportModel.fromJson(Map<String, dynamic> json) =>
       _$ReportModelFromJson(json);

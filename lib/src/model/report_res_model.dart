@@ -5,7 +5,6 @@ import 'common_model.dart';
 
 part 'report_res_model.g.dart';
 
-
 @JsonSerializable()
 class RspReportList extends ResData {
   ReportListRes? resultData;
@@ -16,7 +15,8 @@ class RspReportList extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspReportList.fromJson(json) {
     RspReportList res = _$RspReportListFromJson(json);
@@ -29,13 +29,13 @@ class RspReportList extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = ReportListRes.fromJson(result!);
     }
   }
 }
 
-class ReportListRes  {
+class ReportListRes {
   List<ReportModel?>? data;
   PageInfoModel? pageInfo;
 
@@ -46,18 +46,17 @@ class ReportListRes  {
 
   ReportListRes.fromJson(Map json)
       : data = json['Data'] == null
-      ? <ReportModel>[]
-      : json['Data']
-      .map<ReportModel>(
-          (json) => ReportModel.fromJson(json))
-      .toList(),
-        pageInfo= PageInfoModel.fromJson(json['pageInfo'] ?? <String, dynamic>{})
-  ;
+            ? <ReportModel>[]
+            : json['Data']
+                .map<ReportModel>((json) => ReportModel.fromJson(json))
+                .toList(),
+        pageInfo =
+            PageInfoModel.fromJson(json['pageInfo'] ?? <String, dynamic>{});
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     List list = [];
-    if(data!=null) {
+    if (data != null) {
       for (ReportModel? item in data!) {
         list.add(item?.toJson());
       }
@@ -84,7 +83,8 @@ class RspReportInfo extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspReportInfo.fromJson(json) {
     RspReportInfo res = _$RspReportInfoFromJson(json);
@@ -97,15 +97,16 @@ class RspReportInfo extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = ReportInfoRes.fromJson(result!);
     }
   }
 }
 
-class ReportInfoRes  {
+class ReportInfoRes {
   ReportModel? data;
   String? message;
+
   ReportInfoRes({
     required this.data,
     required this.message,
@@ -127,4 +128,3 @@ class ReportInfoRes  {
     return toJson().toString();
   }
 }
-

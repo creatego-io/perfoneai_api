@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'agent_req_model.g.dart';
 
-
 @JsonSerializable()
 class ReqAgentList {
   final String? rows;
@@ -14,7 +13,8 @@ class ReqAgentList {
   @JsonKey(name: 'end_date')
   final String? endDate;
 
-  ReqAgentList({this.rows, this.page, this.name, this.ip, this.startDate, this.endDate});
+  ReqAgentList(
+      {this.rows, this.page, this.name, this.ip, this.startDate, this.endDate});
 
   Map<String, dynamic> toJson() => _$ReqAgentListToJson(this);
 }
@@ -46,11 +46,10 @@ class ReqAgentModify {
   final String? ip;
   final String? update_user_id;
 
-  ReqAgentModify({this.id, this.name,this.ip, this.update_user_id});
+  ReqAgentModify({this.id, this.name, this.ip, this.update_user_id});
 
   Map<String, dynamic> toJson() => _$ReqAgentModifyToJson(this);
 }
-
 
 @JsonSerializable()
 class ReqAgentDelete {

@@ -5,7 +5,6 @@ import 'common_model.dart';
 
 part 'agent_res_model.g.dart';
 
-
 @JsonSerializable()
 class RspAgentList extends ResData {
   AgentListRes? resultData;
@@ -16,7 +15,8 @@ class RspAgentList extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspAgentList.fromJson(json) {
     RspAgentList res = _$RspAgentListFromJson(json);
@@ -29,13 +29,13 @@ class RspAgentList extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = AgentListRes.fromJson(result!);
     }
   }
 }
 
-class AgentListRes  {
+class AgentListRes {
   List<AgentModel?>? data;
   PageInfoModel? pageInfo;
 
@@ -46,18 +46,17 @@ class AgentListRes  {
 
   AgentListRes.fromJson(Map json)
       : data = json['Data'] == null
-      ? <AgentModel>[]
-      : json['Data']
-      .map<AgentModel>(
-          (json) => AgentModel.fromJson(json))
-      .toList(),
-        pageInfo= PageInfoModel.fromJson(json['pageInfo'] ?? <String, dynamic>{})
-  ;
+            ? <AgentModel>[]
+            : json['Data']
+                .map<AgentModel>((json) => AgentModel.fromJson(json))
+                .toList(),
+        pageInfo =
+            PageInfoModel.fromJson(json['pageInfo'] ?? <String, dynamic>{});
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     List list = [];
-    if(data!=null) {
+    if (data != null) {
       for (AgentModel? item in data!) {
         list.add(item?.toJson());
       }
@@ -74,17 +73,6 @@ class AgentListRes  {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 @JsonSerializable()
 class RspAgentInfo extends ResData {
   AgentInfoRes? resultData;
@@ -95,7 +83,8 @@ class RspAgentInfo extends ResData {
     super.result,
     super.timestamp,
     super.error,
-    super.path,});
+    super.path,
+  });
 
   factory RspAgentInfo.fromJson(json) {
     RspAgentInfo res = _$RspAgentInfoFromJson(json);
@@ -108,15 +97,16 @@ class RspAgentInfo extends ResData {
 
   @override
   fromJsonResult() {
-    if(result!=null && result is Map) {
+    if (result != null && result is Map) {
       resultData = AgentInfoRes.fromJson(result!);
     }
   }
 }
 
-class AgentInfoRes  {
+class AgentInfoRes {
   AgentModel? data;
   String? message;
+
   AgentInfoRes({
     required this.data,
   });
@@ -137,4 +127,3 @@ class AgentInfoRes  {
     return toJson().toString();
   }
 }
-

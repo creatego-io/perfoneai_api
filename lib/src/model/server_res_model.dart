@@ -10,8 +10,8 @@ class RspServerList extends ResData {
   ServerListRes? resultData;
 
   RspServerList({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,
@@ -78,8 +78,8 @@ class RspServerInfo extends ResData {
   ServerInfoRes? resultData;
 
   RspServerInfo({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,

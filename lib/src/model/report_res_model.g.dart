@@ -8,8 +8,8 @@ part of 'report_res_model.dart';
 
 RspReportList _$RspReportListFromJson(Map<String, dynamic> json) =>
     RspReportList(
-      status: json['status'] as int,
-      message: json['message'] as String,
+      status: json['status'] as int?,
+      message: json['message'] as String?,
       result: json['result'] as Map<String, dynamic>?,
       timestamp: json['timestamp'] as num?,
       error: json['error'] as String?,
@@ -31,8 +31,8 @@ Map<String, dynamic> _$RspReportListToJson(RspReportList instance) =>
 
 RspReportInfo _$RspReportInfoFromJson(Map<String, dynamic> json) =>
     RspReportInfo(
-      status: json['status'] as int,
-      message: json['message'] as String,
+      status: json['status'] as int?,
+      message: json['message'] as String?,
       result: json['result'] as Map<String, dynamic>?,
       timestamp: json['timestamp'] as num?,
       error: json['error'] as String?,

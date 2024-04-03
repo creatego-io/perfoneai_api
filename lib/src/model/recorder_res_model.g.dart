@@ -9,8 +9,8 @@ part of 'recorder_res_model.dart';
 RspRecorderGetProperty _$RspRecorderGetPropertyFromJson(
         Map<String, dynamic> json) =>
     RspRecorderGetProperty(
-      status: json['status'] as int,
-      message: json['message'] as String,
+      status: json['status'] as int?,
+      message: json['message'] as String?,
       result: json['result'] as Map<String, dynamic>?,
       timestamp: json['timestamp'] as num?,
       error: json['error'] as String?,

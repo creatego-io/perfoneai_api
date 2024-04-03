@@ -10,8 +10,8 @@ class RspAgentList extends ResData {
   AgentListRes? resultData;
 
   RspAgentList({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,
@@ -78,8 +78,8 @@ class RspAgentInfo extends ResData {
   AgentInfoRes? resultData;
 
   RspAgentInfo({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,

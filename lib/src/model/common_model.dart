@@ -27,8 +27,8 @@ class RspMessage extends ResData {
   MessageRes? resultData;
 
   RspMessage({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,

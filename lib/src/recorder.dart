@@ -43,7 +43,7 @@ abstract class _Recorder {
       @Body() ReqRecorderAddThinkTime request);
 
   @POST('/recorder/addRdz')
-  Future<RspRecorderTransaction> list(@Body() ReqRecorderAddRdz request);
+  Future<RspRecorderTransaction> addRdz(@Body() ReqRecorderAddRdz request);
 
   @POST('/recorder/loadScript')
   Future<RspRecorderTransaction> loadScript(

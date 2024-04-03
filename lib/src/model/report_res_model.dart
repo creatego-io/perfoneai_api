@@ -10,8 +10,8 @@ class RspReportList extends ResData {
   ReportListRes? resultData;
 
   RspReportList({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,
@@ -78,8 +78,8 @@ class RspReportInfo extends ResData {
   ReportInfoRes? resultData;
 
   RspReportInfo({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,

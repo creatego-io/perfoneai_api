@@ -1,6 +1,6 @@
 abstract class ResData {
-  int status;
-  String message;
+  int? status;
+  String? message;
   Map? result;
   num? timestamp;
   String? error;

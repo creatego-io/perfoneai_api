@@ -8,8 +8,8 @@ part of 'server_res_model.dart';
 
 RspServerList _$RspServerListFromJson(Map<String, dynamic> json) =>
     RspServerList(
-      status: json['status'] as int,
-      message: json['message'] as String,
+      status: json['status'] as int?,
+      message: json['message'] as String?,
       result: json['result'] as Map<String, dynamic>?,
       timestamp: json['timestamp'] as num?,
       error: json['error'] as String?,
@@ -31,8 +31,8 @@ Map<String, dynamic> _$RspServerListToJson(RspServerList instance) =>
 
 RspServerInfo _$RspServerInfoFromJson(Map<String, dynamic> json) =>
     RspServerInfo(
-      status: json['status'] as int,
-      message: json['message'] as String,
+      status: json['status'] as int?,
+      message: json['message'] as String?,
       result: json['result'] as Map<String, dynamic>?,
       timestamp: json['timestamp'] as num?,
       error: json['error'] as String?,

@@ -276,7 +276,7 @@ class __Recorder implements _Recorder {
   }
 
   @override
-  Future<RspRecorderTransaction> list(ReqRecorderAddRdz request) async {
+  Future<RspRecorderTransaction> addRdz(ReqRecorderAddRdz request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

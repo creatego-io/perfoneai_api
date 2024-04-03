@@ -7,8 +7,8 @@ part of 'agent_res_model.dart';
 // **************************************************************************
 
 RspAgentList _$RspAgentListFromJson(Map<String, dynamic> json) => RspAgentList(
-      status: json['status'] as int,
-      message: json['message'] as String,
+      status: json['status'] as int?,
+      message: json['message'] as String?,
       result: json['result'] as Map<String, dynamic>?,
       timestamp: json['timestamp'] as num?,
       error: json['error'] as String?,
@@ -29,8 +29,8 @@ Map<String, dynamic> _$RspAgentListToJson(RspAgentList instance) =>
     };
 
 RspAgentInfo _$RspAgentInfoFromJson(Map<String, dynamic> json) => RspAgentInfo(
-      status: json['status'] as int,
-      message: json['message'] as String,
+      status: json['status'] as int?,
+      message: json['message'] as String?,
       result: json['result'] as Map<String, dynamic>?,
       timestamp: json['timestamp'] as num?,
       error: json['error'] as String?,

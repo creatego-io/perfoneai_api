@@ -8,8 +8,8 @@ class RspRecorderGetProperty extends ResData {
   RspRecorderGetPropertyRes? resultData;
 
   RspRecorderGetProperty({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,

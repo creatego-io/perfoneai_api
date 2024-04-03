@@ -10,8 +10,8 @@ class RspUserInfo extends ResData {
   LoginRes? resultData;
 
   RspUserInfo({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,
@@ -63,8 +63,8 @@ class RspUserDuplicate extends ResData {
   DuplicateRes? resultData;
 
   RspUserDuplicate({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,
@@ -119,8 +119,8 @@ class RspUserList extends ResData {
   UserListRes? resultData;
 
   RspUserList({
-    required super.status,
-    required super.message,
+    super.status,
+    super.message,
     super.result,
     super.timestamp,
     super.error,

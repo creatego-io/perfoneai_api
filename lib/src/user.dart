@@ -3,7 +3,9 @@ import 'package:retrofit/http.dart';
 
 import '../perfone_api.dart';
 import 'dio_client_for_retrofit.dart';
-import 'model/agent_model.dart';
+import 'model/common_model.dart';
+import 'model/user_req_model.dart';
+import 'model/user_res_model.dart';
 
 part 'user.g.dart';
 
@@ -15,5 +17,30 @@ abstract class User {
       );
 
   @POST('/user/login')
-  Future<RspLogin> login(@Body() ReqLogin request);
+  Future<RspUserInfo> login(@Body() ReqUserLogin request);
+
+  @POST('/user/duplicate')
+  Future<RspUserDuplicate> duplicate(@Body() ReqUserDuplicate request);
+
+  @POST('/user/join')
+  Future<RspMessage> join(@Body() ReqUserJoin request);
+
+  @POST('/user/list')
+  Future<RspUserList> list(@Body() ReqUserList request);
+
+  @POST('/user/info')
+  Future<RspUserInfo> info(@Body() ReqUserInfo request);
+
+  @POST('/user/pwdModify')
+  Future<RspMessage> pwdModify(@Body() ReqUserPwdModify request);
+
+  @POST('/user/infoModify')
+  Future<RspMessage> infoModify(@Body() ReqUserInfoModify request);
+
+  @POST('/user/delete')
+  Future<RspMessage> delete(@Body() ReqUserDelete request);
+
+  @POST('/user/pwdReset')
+  Future<RspMessage> pwdReset(@Body() ReqUserPwdReset request);
+
 }

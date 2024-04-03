@@ -48,15 +48,38 @@ class DioClientForRetrofit {
       dio.interceptors.addAll(customInterceptors);
     }
 
+    // dio.interceptors.addAll([
+    //   ErrorInterceptor(),
+    // ]);
+
     BaseOptions options = BaseOptions(
       headers: headers,
       connectTimeout: const Duration(milliseconds: 30000),
       receiveTimeout: const Duration(milliseconds: 60000),
       responseType: responseType,
       receiveDataWhenStatusError: true,
+      validateStatus: (int? status) {
+        return status != null;
+        // return status != null && status >= 200 && status < 300;
+      },
     );
 
     dio.options = options;
     return dio;
+  }
+}
+class ErrorInterceptor extends Interceptor {
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    final status = response.statusCode;
+    final isValid = status != null/* && status >= 200 && status < 300 */;
+    if (!isValid) {
+      throw DioException.badResponse(
+        statusCode: status!,
+        requestOptions: response.requestOptions,
+        response: response,
+      );
+    }
+    super.onResponse(response, handler);
   }
 }

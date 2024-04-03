@@ -10,6 +10,10 @@ part 'recorder.g.dart';
 
 @RestApi(parser: Parser.JsonSerializable)
 abstract class _Recorder {
+
+  @POST('/recorder/list') //check api
+  Future<RspServerList> list(@Body() ReqServerList request);
+
   @POST('/recorder/getProperty')
   Future<RspRecorderGetProperty> getProperty(
       @Body() ReqRecorderGetProperty request);

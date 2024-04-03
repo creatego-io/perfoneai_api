@@ -23,7 +23,13 @@ void main() {
   });
 
   group('Agent', () {
-    //
+    test('checkStatusList', () async {
+      PerfWSConnection con = await PerfOneAIApi.agent.checkStatusList();
+      con.listen((data) {
+        print('ids: ${data['ids']}');
+      });
+      await pause(3);
+    });
   });
 
   group('Server', () {
@@ -31,10 +37,29 @@ void main() {
   });
 
   group('Recorder', () {
-    //
+    test('echo', () async {
+      PerfWSConnection con = await PerfOneAIApi.recorder.echo();
+      con.send("First message");
+      con.listen((msg) {
+        print('<< $msg');
+      });
+      await pause(3);
+    });
+
+    test('recording', () async {
+      PerfWSConnection con = await PerfOneAIApi.recorder.recording();
+      con.listen((data) {
+        print('id: ${data['websocketSessionId']}');
+      });
+      await pause(3);
+    });
   });
 
   group('Report', () {
     //
   });
+}
+
+Future<void> pause(int second) async {
+  await Future.delayed(const Duration(seconds: 3));
 }

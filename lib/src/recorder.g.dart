@@ -8,8 +8,8 @@ part of 'recorder.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _Recorder implements Recorder {
-  _Recorder(
+class __Recorder implements _Recorder {
+  __Recorder(
     this._dio, {
     this.baseUrl,
   });

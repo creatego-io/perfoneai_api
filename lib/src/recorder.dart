@@ -1,21 +1,15 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
 import '../perfone_api.dart';
 import 'dio_client_for_retrofit.dart';
-import 'model/common_model.dart';
-import 'model/recorder_req_model.dart';
-import 'model/recorder_res_model.dart';
 
 part 'recorder.g.dart';
 
 @RestApi(parser: Parser.JsonSerializable)
-abstract class Recorder {
-  factory Recorder() => _Recorder(
-        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.disableLog),
-        baseUrl: PerfOneAIApi.apiEndpoint,
-      );
-
+abstract class _Recorder {
   @POST('/recorder/getProperty')
   Future<RspRecorderGetProperty> getProperty(
       @Body() ReqRecorderGetProperty request);
@@ -60,7 +54,22 @@ abstract class Recorder {
 
   @POST('/recorder/saveScript')
   Future<RspMessage> saveScript(@Body() ReqRecorderSaveScript request);
+}
 
-// @WS('/recording')
-// Future<RspRecorderList> recording(@Body() ReqRecorderList request);
+class Recorder extends __Recorder with PerfWebSocket {
+  factory Recorder() => Recorder._internal(
+        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.disableLog),
+        baseUrl: PerfOneAIApi.apiEndpoint,
+      );
+
+  Recorder._internal(Dio dio, {String? baseUrl}) : super(dio, baseUrl: baseUrl);
+
+  /// websocket 테스트
+  Future<PerfWSConnection> echo() async {
+    return connect('wss://echo.websocket.org/', json: false);
+  }
+
+  Future<PerfWSConnection> recording() async {
+    return connect('$baseUrl/recording');
+  }
 }

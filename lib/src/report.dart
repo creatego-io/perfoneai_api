@@ -3,9 +3,6 @@ import 'package:retrofit/http.dart';
 
 import '../perfone_api.dart';
 import 'dio_client_for_retrofit.dart';
-import 'model/common_model.dart';
-import 'model/report_req_model.dart';
-import 'model/report_res_model.dart';
 
 part 'report.g.dart';
 

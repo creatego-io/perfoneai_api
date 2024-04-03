@@ -1,8 +1,13 @@
-import 'package:perfone_api/src/agent.dart';
-import 'package:perfone_api/src/report.dart';
-import 'package:perfone_api/src/server.dart';
-import 'package:perfone_api/src/tester.dart';
-import 'package:perfone_api/src/user.dart';
+import 'dart:convert';
+
+import 'package:web_socket_channel/web_socket_channel.dart';
+
+import 'src/agent.dart';
+import 'src/recorder.dart';
+import 'src/report.dart';
+import 'src/server.dart';
+import 'src/tester.dart';
+import 'src/user.dart';
 
 class PerfOneAIApi {
   static bool disableLog = false;
@@ -13,13 +18,40 @@ class PerfOneAIApi {
       : 'http://godj.iptime.org:29100/perfone/v1';
 
   /// direct call classes
-  static get user => User();
+  static User get user => User();
 
-  static get agent => Agent();
+  static Agent get agent => Agent();
 
-  static get report => Report();
+  static Report get report => Report();
 
-  static get server => Server();
+  static Server get server => Server();
 
-  static get tester => Tester();
+  static Tester get tester => Tester();
+
+  static Recorder get recorder => Recorder();
+}
+
+class PerfWSConnection {
+  WebSocketChannel channel;
+  bool json;
+
+  PerfWSConnection(this.channel, {this.json = true});
+
+  void send(dynamic data) {
+    if (json) {
+      data = jsonEncode(json);
+    }
+
+    channel.sink.add(data);
+  }
+
+  void listen(void Function(dynamic) listener) {
+    channel.stream.listen((data) {
+      if (json) {
+        data = jsonDecode(data);
+      }
+
+      listener(data);
+    });
+  }
 }

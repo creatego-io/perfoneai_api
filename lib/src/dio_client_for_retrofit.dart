@@ -1,5 +1,8 @@
 import "package:dio/dio.dart";
 import "package:pretty_dio_logger/pretty_dio_logger.dart";
+import "package:web_socket_channel/web_socket_channel.dart";
+
+import "../perfone_api.dart";
 
 class DioClientForRetrofit {
   final String? bearerToken;
@@ -82,5 +85,24 @@ class ErrorInterceptor extends Interceptor {
       );
     }
     super.onResponse(response, handler);
+  }
+}
+
+mixin PerfWebSocket {
+  Future<PerfWSConnection> connect(String url, {bool json = true}) async {
+    Uri uri = Uri.parse(url);
+
+    switch (uri.scheme) {
+      case 'http':
+        uri = uri.replace(scheme: 'ws');
+        break;
+      case 'https':
+        uri = uri.replace(scheme: 'wss');
+        break;
+    }
+
+    final channel = WebSocketChannel.connect(uri);
+    await channel.ready;
+    return PerfWSConnection(channel, json: json);
   }
 }

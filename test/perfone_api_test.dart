@@ -4,7 +4,7 @@ import 'package:perfone_api/src/model/agent_model.dart';
 
 void main() {
   setUp(() {
-    pfUseLocalhost = true;
+    PerfOneAIApi.pfUseLocalhost = true;
   });
 
   group('Agent', () {

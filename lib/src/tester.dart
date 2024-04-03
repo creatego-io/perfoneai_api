@@ -9,7 +9,7 @@ part 'tester.g.dart';
 @RestApi(parser: Parser.JsonSerializable)
 abstract class Tester {
   factory Tester() => _Tester(
-        DioClientForRetrofit().init(prettyLog: !pfDisableLog),
-        baseUrl: pfApiEndpoint,
+        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.pfDisableLog),
+        baseUrl: PerfOneAIApi.pfApiEndpoint,
       );
 }

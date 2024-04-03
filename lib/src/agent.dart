@@ -9,7 +9,7 @@ part 'agent.g.dart';
 @RestApi(parser: Parser.JsonSerializable)
 abstract class Agent {
   factory Agent() => _Agent(
-        DioClientForRetrofit().init(prettyLog: !pfDisableLog),
-        baseUrl: pfApiEndpoint,
+        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.pfDisableLog),
+        baseUrl: PerfOneAIApi.pfApiEndpoint,
       );
 }

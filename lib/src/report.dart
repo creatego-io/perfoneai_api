@@ -9,7 +9,7 @@ part 'report.g.dart';
 @RestApi(parser: Parser.JsonSerializable)
 abstract class Report {
   factory Report() => _Report(
-        DioClientForRetrofit().init(prettyLog: !pfDisableLog),
-        baseUrl: pfApiEndpoint,
+        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.pfDisableLog),
+        baseUrl: PerfOneAIApi.pfApiEndpoint,
       );
 }

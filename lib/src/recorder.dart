@@ -9,7 +9,7 @@ part 'recorder.g.dart';
 @RestApi(parser: Parser.JsonSerializable)
 abstract class Recorder {
   factory Recorder() => _Recorder(
-        DioClientForRetrofit().init(prettyLog: !pfDisableLog),
-        baseUrl: pfApiEndpoint,
+        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.pfDisableLog),
+        baseUrl: PerfOneAIApi.pfApiEndpoint,
       );
 }

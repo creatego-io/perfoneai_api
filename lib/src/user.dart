@@ -10,8 +10,8 @@ part 'user.g.dart';
 @RestApi(parser: Parser.JsonSerializable)
 abstract class User {
   factory User() => _User(
-        DioClientForRetrofit().init(prettyLog: !pfDisableLog),
-        baseUrl: pfApiEndpoint,
+        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.pfDisableLog),
+        baseUrl: PerfOneAIApi.pfApiEndpoint,
       );
 
   @POST('/user/login')

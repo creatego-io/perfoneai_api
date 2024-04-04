@@ -19,6 +19,34 @@ class __Recorder implements _Recorder {
   String? baseUrl;
 
   @override
+  Future<RspServerList> list(ReqServerList request) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<RspServerList>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/recorder/list',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = RspServerList.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<RspRecorderGetProperty> getProperty(
       ReqRecorderGetProperty request) async {
     const _extra = <String, dynamic>{};

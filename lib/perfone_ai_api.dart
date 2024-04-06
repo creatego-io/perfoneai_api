@@ -11,11 +11,14 @@ import 'src/user.dart';
 
 class PerfOneAIApi {
   static bool disableLog = false;
+
   static bool useLocalhost = false;
 
   static String get apiEndpoint => useLocalhost
       ? 'http://localhost:29100/perfone/v1'
       : 'http://godj.iptime.org:29100/perfone/v1';
+
+  static String language = 'ko'; // 또는 en
 
   /// direct call classes
   static User get user => User();

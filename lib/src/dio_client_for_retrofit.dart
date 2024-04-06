@@ -22,7 +22,7 @@ class DioClientForRetrofit {
     header['Content-Type'] = contentType ?? "application/json";
     header['Accept'] = "*/*";
     header['Accept-Encoding'] = "gzip,compress";
-    header['Accept-Language'] = 'ko'; // 반드시 필요함
+    header['Accept-Language'] = PerfOneAIApi.language; // 반드시 필요함
 
     if (bearerToken != null) {
       header['Authorization'] = "Bearer $bearerToken";

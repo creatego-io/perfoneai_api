@@ -10,7 +10,6 @@ part 'recorder.g.dart';
 
 @RestApi(parser: Parser.JsonSerializable)
 abstract class _Recorder {
-
   @POST('/recorder/list') //check api
   Future<RspServerList> list(@Body() ReqServerList request);
 
@@ -62,7 +61,8 @@ abstract class _Recorder {
 
 class Recorder extends __Recorder with PerfWebSocket {
   factory Recorder() => Recorder._internal(
-        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.disableLog),
+        DioClientForRetrofit(basicToken: PerfOneAIApi.basicToken)
+            .init(prettyLog: !PerfOneAIApi.disableLog),
         baseUrl: PerfOneAIApi.apiEndpoint,
       );
 

@@ -2,10 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:perfone_api/perfone_api.dart';
 
 void main() {
-  setUp(() {
-    PerfOneAIApi.useLocalhost = true;
-  });
-
   group('User', () {
     test('User-login', () async {
       ResData rsp = await PerfOneAIApi.user.login(ReqUserLogin(

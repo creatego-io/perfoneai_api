@@ -9,7 +9,8 @@ part 'user.g.dart';
 @RestApi(parser: Parser.JsonSerializable)
 abstract class User {
   factory User() => _User(
-        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.disableLog),
+        DioClientForRetrofit(basicToken: PerfOneAIApi.basicToken)
+            .init(prettyLog: !PerfOneAIApi.disableLog),
         baseUrl: PerfOneAIApi.apiEndpoint,
       );
 

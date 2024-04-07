@@ -26,7 +26,8 @@ abstract class _Agent {
 
 class Agent extends __Agent with PerfWebSocket {
   factory Agent() => Agent._internal(
-        DioClientForRetrofit().init(prettyLog: !PerfOneAIApi.disableLog),
+        DioClientForRetrofit(basicToken: PerfOneAIApi.basicToken)
+            .init(prettyLog: !PerfOneAIApi.disableLog),
         baseUrl: PerfOneAIApi.apiEndpoint,
       );
 

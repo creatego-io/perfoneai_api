@@ -45,9 +45,9 @@ class ReportListRes {
   });
 
   ReportListRes.fromJson(Map json)
-      : data = json['Data'] == null
+      : data = json['data'] == null
             ? <ReportModel>[]
-            : json['Data']
+            : json['data']
                 .map<ReportModel>((json) => ReportModel.fromJson(json))
                 .toList(),
         pageInfo =

@@ -45,9 +45,9 @@ class AgentListRes {
   });
 
   AgentListRes.fromJson(Map json)
-      : data = json['Data'] == null
+      : data = json['data'] == null
             ? <AgentModel>[]
-            : json['Data']
+            : json['data']
                 .map<AgentModel>((json) => AgentModel.fromJson(json))
                 .toList(),
         pageInfo =

@@ -45,9 +45,9 @@ class ServerListRes {
   });
 
   ServerListRes.fromJson(Map json)
-      : data = json['Data'] == null
+      : data = json['data'] == null
             ? <ServerModel>[]
-            : json['Data']
+            : json['data']
                 .map<ServerModel>((json) => ServerModel.fromJson(json))
                 .toList(),
         pageInfo =

@@ -154,9 +154,9 @@ class UserListRes {
   });
 
   UserListRes.fromJson(Map json)
-      : data = json['Data'] == null
+      : data = json['data'] == null
             ? <UserModel>[]
-            : json['Data']
+            : json['data']
                 .map<UserModel>((json) => UserModel.fromJson(json))
                 .toList(),
         pageInfo =

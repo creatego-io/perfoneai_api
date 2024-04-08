@@ -35,7 +35,7 @@ abstract class ResData {
     return map;
   }
 
-  bool get isSuccess => status != 200;
+  bool get isSuccess => (status ?? 500) ~/ 100 == 2;
 
   fromJsonResult();
 }

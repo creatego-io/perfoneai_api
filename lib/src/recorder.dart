@@ -10,8 +10,9 @@ part 'recorder.g.dart';
 
 @RestApi(parser: Parser.JsonSerializable)
 abstract class _Recorder {
-  @POST('/recorder/list') //check api
-  Future<RspServerList> list(@Body() ReqServerList request);
+  //
+  // @POST('/recorder/list') //check api
+  // Future<RspServerList> list(@Body() ReqServerList request);
 
   @POST('/recorder/getProperty')
   Future<RspRecorderGetProperty> getProperty(
@@ -48,6 +49,9 @@ abstract class _Recorder {
   @POST('/recorder/addRdz')
   Future<RspRecorderTransaction> addRdz(@Body() ReqRecorderAddRdz request);
 
+  @POST('/recorder/getScriptList')
+  Future<RspRecorderGetScriptList> getScriptList(@Body() ReqRecorderGetScriptList request);
+
   @POST('/recorder/loadScript')
   Future<RspRecorderTransaction> loadScript(
       @Body() ReqRecorderLoadScript request);
@@ -57,6 +61,9 @@ abstract class _Recorder {
 
   @POST('/recorder/saveScript')
   Future<RspMessage> saveScript(@Body() ReqRecorderSaveScript request);
+
+  @POST('/recorder/getVerificationInfo')
+  Future<RspRecorderGetVerificationInfo> getVerificationInfo(@Body() ReqRecorderGetVerificationInfo request);
 }
 
 class Recorder extends __Recorder with PerfWebSocket {

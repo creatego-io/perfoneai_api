@@ -19,34 +19,6 @@ class __Recorder implements _Recorder {
   String? baseUrl;
 
   @override
-  Future<RspServerList> list(ReqServerList request) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(request.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<RspServerList>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/recorder/list',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = RspServerList.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
   Future<RspRecorderGetProperty> getProperty(
       ReqRecorderGetProperty request) async {
     const _extra = <String, dynamic>{};
@@ -332,6 +304,35 @@ class __Recorder implements _Recorder {
   }
 
   @override
+  Future<RspRecorderGetScriptList> getScriptList(
+      ReqRecorderGetScriptList request) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RspRecorderGetScriptList>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/recorder/getScriptList',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = RspRecorderGetScriptList.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<RspRecorderTransaction> loadScript(
       ReqRecorderLoadScript request) async {
     const _extra = <String, dynamic>{};
@@ -413,6 +414,35 @@ class __Recorder implements _Recorder {
               baseUrl,
             ))));
     final value = RspMessage.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<RspRecorderGetVerificationInfo> getVerificationInfo(
+      ReqRecorderGetVerificationInfo request) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RspRecorderGetVerificationInfo>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/recorder/getVerificationInfo',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = RspRecorderGetVerificationInfo.fromJson(_result.data!);
     return value;
   }
 

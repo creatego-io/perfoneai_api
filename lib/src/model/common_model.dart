@@ -225,3 +225,46 @@ class ReportModel {
     return toJson().toString();
   }
 }
+
+@JsonSerializable()
+class TestLoadDataModel {
+  String? testType;
+  int? testValue;
+  String? userIncreaseType;
+  int? startUser;
+  int? endUser;
+  int? rampUpUser;
+  int? rampUpTerm;
+  int? rampDownUser;
+  int? rampDownTerm;
+  int? monitoringCount;
+  int? resultRate;
+  int? virtualUserCount;
+  int? timeout;
+
+
+  TestLoadDataModel({
+    this.testType,
+    this.testValue,
+    this.userIncreaseType,
+    this.startUser,
+    this.endUser,
+    this.rampUpUser,
+    this.rampUpTerm,
+    this.rampDownUser,
+    this.rampDownTerm,
+    this.monitoringCount,
+    this.resultRate,
+    this.virtualUserCount,
+    this.timeout});
+
+  factory TestLoadDataModel.fromJson(Map<String, dynamic> json) =>
+      _$TestLoadDataModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TestLoadDataModelToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
+}

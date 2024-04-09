@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tester.dart';
+part of 'chatbot.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'tester.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _Tester implements Tester {
-  _Tester(
+class __Chatbot implements _Chatbot {
+  __Chatbot(
     this._dio, {
     this.baseUrl,
   });

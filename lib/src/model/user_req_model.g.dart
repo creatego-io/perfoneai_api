@@ -87,7 +87,7 @@ Map<String, dynamic> _$ReqUserPwdModifyToJson(ReqUserPwdModify instance) =>
 ReqUserInfoModify _$ReqUserInfoModifyFromJson(Map<String, dynamic> json) =>
     ReqUserInfoModify(
       userId: json['user_id'] as String?,
-      password: json['password'] as String?,
+      name: json['name'] as String?,
       update_user_id: json['update_user_id'] as String?,
       company: json['company'] as String?,
     );
@@ -95,7 +95,7 @@ ReqUserInfoModify _$ReqUserInfoModifyFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ReqUserInfoModifyToJson(ReqUserInfoModify instance) =>
     <String, dynamic>{
       'user_id': instance.userId,
-      'password': instance.password,
+      'name': instance.name,
       'company': instance.company,
       'update_user_id': instance.update_user_id,
     };

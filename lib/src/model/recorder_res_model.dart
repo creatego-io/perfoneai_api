@@ -183,20 +183,50 @@ class MessageBodyModel {
   }
 }
 
-class RspRecorderTransaction {
+@JsonSerializable()
+class RspRecorderTransaction extends ResData {
+  RspRecorderTransactionRes? resultData;
+
+  RspRecorderTransaction({
+    super.status,
+    super.message,
+    super.result,
+    super.timestamp,
+    super.error,
+    super.path,
+  });
+
+  factory RspRecorderTransaction.fromJson(json) {
+    RspRecorderTransaction res = _$RspRecorderTransactionFromJson(json);
+    res.fromJsonResult();
+    return res;
+  }
+
+  @override
+  Map<String, dynamic> toJson() => _$RspRecorderTransactionToJson(this);
+
+  @override
+  fromJsonResult() {
+    if (result != null && result is Map) {
+      resultData = RspRecorderTransactionRes.fromJson(result!);
+    }
+  }
+}
+
+class RspRecorderTransactionRes {
   RecordingTreeModel? tree;
   String? xml;
   String? erl;
   String? message;
 
-  RspRecorderTransaction({
+  RspRecorderTransactionRes({
     required this.tree,
     required this.xml,
     required this.erl,
     required this.message,
   });
 
-  RspRecorderTransaction.fromJson(Map json)
+  RspRecorderTransactionRes.fromJson(Map json)
       : tree = RecordingTreeModel.fromJson(json['tree'] ?? <String, dynamic>{}),
         xml = json['xml'],
         erl = json['erl'],
@@ -287,6 +317,159 @@ class TransactionModel {
     map['id'] = id;
     map['name'] = name;
 
+    return map;
+  }
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
+}
+
+@JsonSerializable()
+class RspRecorderGetScriptList extends ResData {
+  RecorderGetScriptListRes? resultData;
+
+  RspRecorderGetScriptList({
+    super.status,
+    super.message,
+    super.result,
+    super.timestamp,
+    super.error,
+    super.path,
+  });
+
+  factory RspRecorderGetScriptList.fromJson(json) {
+    RspRecorderGetScriptList res = _$RspRecorderGetScriptListFromJson(json);
+    res.fromJsonResult();
+    return res;
+  }
+
+  @override
+  Map<String, dynamic> toJson() => _$RspRecorderGetScriptListToJson(this);
+
+  @override
+  fromJsonResult() {
+    if (result != null && result is Map) {
+      resultData = RecorderGetScriptListRes.fromJson(result!);
+    }
+  }
+}
+
+class RecorderGetScriptListRes {
+  List<ScriptModel?>? script_list;
+  String? message;
+
+  RecorderGetScriptListRes({
+    required this.script_list,
+    required this.message,
+  });
+
+  RecorderGetScriptListRes.fromJson(Map json)
+      : script_list = json['script_list'] == null
+      ? <ScriptModel>[]
+      : json['script_list']
+      .map<ScriptModel>((json) => ScriptModel.fromJson(json))
+      .toList(),
+        message =json['message'];
+
+  Map<String, dynamic> toJson() {
+    var map = <String, dynamic>{};
+    List list = [];
+    if (script_list != null) {
+      for (ScriptModel? item in script_list!) {
+        list.add(item?.toJson());
+      }
+    }
+    map['script_list'] = script_list;
+    map['message'] = message;
+
+    return map;
+  }
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
+}
+
+@JsonSerializable()
+class ScriptModel {
+  String? script_name;
+  String? create_datetime;
+
+  ScriptModel({
+    this.script_name,
+    this.create_datetime,
+  });
+
+  factory ScriptModel.fromJson(Map<String, dynamic> json) =>
+      _$ScriptModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ScriptModelToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
+}
+
+
+
+
+@JsonSerializable()
+class RspRecorderGetVerificationInfo extends ResData {
+  RspRecorderGetVerificationInfoRes? resultData;
+
+  RspRecorderGetVerificationInfo({
+    super.status,
+    super.message,
+    super.result,
+    super.timestamp,
+    super.error,
+    super.path,
+  });
+
+  factory RspRecorderGetVerificationInfo.fromJson(json) {
+    RspRecorderGetVerificationInfo res = _$RspRecorderGetVerificationInfoFromJson(json);
+    res.fromJsonResult();
+    return res;
+  }
+
+  @override
+  Map<String, dynamic> toJson() => _$RspRecorderGetVerificationInfoToJson(this);
+
+  @override
+  fromJsonResult() {
+    if (result != null && result is Map) {
+      resultData = RspRecorderGetVerificationInfoRes.fromJson(result!);
+    }
+  }
+}
+
+class RspRecorderGetVerificationInfoRes {
+  String? request;
+  String? response;
+  String? message;
+
+  RspRecorderGetVerificationInfoRes({
+    required this.request,
+    required this.response,
+    required this.message,
+  });
+
+  RspRecorderGetVerificationInfoRes.fromJson(Map json)
+      :
+        request =json['request'],
+        response =json['response'],
+        message =json['message']
+  ;
+
+  Map<String, dynamic> toJson() {
+    var map = <String, dynamic>{};
+    map['request'] = request;
+    map['response'] = response;
+    map['message'] = message;
     return map;
   }
 

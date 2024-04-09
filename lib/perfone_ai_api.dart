@@ -3,10 +3,11 @@ import 'dart:convert';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 import 'src/agent.dart';
+import 'src/chatbot.dart';
 import 'src/recorder.dart';
 import 'src/report.dart';
 import 'src/server.dart';
-import 'src/tester.dart';
+import 'src/test.dart';
 import 'src/user.dart';
 
 class PerfOneAIApi {
@@ -27,7 +28,9 @@ class PerfOneAIApi {
 
   static Server get server => Server();
 
-  static Tester get tester => Tester();
+  static Test get test => Test();
+
+  static Chatbot get chatbot => Chatbot();
 
   static Recorder get recorder => Recorder();
 }

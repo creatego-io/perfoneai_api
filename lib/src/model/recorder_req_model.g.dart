@@ -217,3 +217,25 @@ Map<String, dynamic> _$ReqRecorderSaveScriptToJson(
       'script_name': instance.script_name,
       'xml': instance.xml,
     };
+
+ReqRecorderGetScriptList _$ReqRecorderGetScriptListFromJson(
+        Map<String, dynamic> json) =>
+    ReqRecorderGetScriptList();
+
+Map<String, dynamic> _$ReqRecorderGetScriptListToJson(
+        ReqRecorderGetScriptList instance) =>
+    <String, dynamic>{};
+
+ReqRecorderGetVerificationInfo _$ReqRecorderGetVerificationInfoFromJson(
+        Map<String, dynamic> json) =>
+    ReqRecorderGetVerificationInfo(
+      script_name: json['script_name'] as String?,
+      target_id: json['target_id'] as String?,
+    );
+
+Map<String, dynamic> _$ReqRecorderGetVerificationInfoToJson(
+        ReqRecorderGetVerificationInfo instance) =>
+    <String, dynamic>{
+      'script_name': instance.script_name,
+      'target_id': instance.target_id,
+    };

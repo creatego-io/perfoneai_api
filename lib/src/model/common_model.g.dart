@@ -150,3 +150,37 @@ Map<String, dynamic> _$ReportModelToJson(ReportModel instance) =>
       'create_datetime': instance.create_datetime,
       'file_full_path': instance.file_full_path,
     };
+
+TestLoadDataModel _$TestLoadDataModelFromJson(Map<String, dynamic> json) =>
+    TestLoadDataModel(
+      testType: json['testType'] as String?,
+      testValue: json['testValue'] as int?,
+      userIncreaseType: json['userIncreaseType'] as String?,
+      startUser: json['startUser'] as int?,
+      endUser: json['endUser'] as int?,
+      rampUpUser: json['rampUpUser'] as int?,
+      rampUpTerm: json['rampUpTerm'] as int?,
+      rampDownUser: json['rampDownUser'] as int?,
+      rampDownTerm: json['rampDownTerm'] as int?,
+      monitoringCount: json['monitoringCount'] as int?,
+      resultRate: json['resultRate'] as int?,
+      virtualUserCount: json['virtualUserCount'] as int?,
+      timeout: json['timeout'] as int?,
+    );
+
+Map<String, dynamic> _$TestLoadDataModelToJson(TestLoadDataModel instance) =>
+    <String, dynamic>{
+      'testType': instance.testType,
+      'testValue': instance.testValue,
+      'userIncreaseType': instance.userIncreaseType,
+      'startUser': instance.startUser,
+      'endUser': instance.endUser,
+      'rampUpUser': instance.rampUpUser,
+      'rampUpTerm': instance.rampUpTerm,
+      'rampDownUser': instance.rampDownUser,
+      'rampDownTerm': instance.rampDownTerm,
+      'monitoringCount': instance.monitoringCount,
+      'resultRate': instance.resultRate,
+      'virtualUserCount': instance.virtualUserCount,
+      'timeout': instance.timeout,
+    };

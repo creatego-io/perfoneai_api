@@ -184,50 +184,12 @@ void main() {
       await pause(3);
     });
     test('Recorder-list', () async {
-      ResData rsp = await PerfOneAIApi.recorder.list(ReqServerList(
-        rows: '10',
-        page: '1',
-        // name: '1',
-        // startDate: '1',
-        // endDate: '1',
+      RspRecorderGetScriptList rsp = await PerfOneAIApi.recorder.getScriptList(ReqRecorderGetScriptList(
       ));
       print("list : ${rsp.toJson()}");
       /*
  {status: 404, message: null, result: null, timestamp: 1712146350638, error: Not Found, path: /perfone/v1/recorder/list, resultData: null}
        */
-
-    // });
-    // test('Recorder-info', () async {
-    //   ResData rsp = await PerfOneAIApi.recorder.info(ReqServerInfo(
-    //     id: 1,
-    //   ));
-    //   print("info : ${rsp.toJson()}");
-    //   /*
-    //
-    //    */
-    // });
-    //
-    // test('Recorder-modify', () async {
-    //   ResData rsp = await PerfOneAIApi.recorder.modify(ReqServerModify(
-    //     id: 100,
-    //     name: '1',
-    //     ip: '1',
-    //     update_user_id: 'admin',
-    //   ));
-    //   print("modify : ${rsp.toJson()}");
-    //   /*
-    //
-    //    */
-    // });
-    //
-    // test('Recorder-delete', () async {
-    //   ResData rsp = await PerfOneAIApi.recorder.delete(ReqServerDelete(
-    //     id: 333,
-    //   ));
-    //   print("delete : ${rsp.toJson()}");
-    //   /*
-    //
-    //    */
     });
   });
 

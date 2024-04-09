@@ -105,3 +105,92 @@ Map<String, dynamic> _$MessageBodyModelToJson(MessageBodyModel instance) =>
     <String, dynamic>{
       'PostData': instance.PostData,
     };
+
+RspRecorderTransaction _$RspRecorderTransactionFromJson(
+        Map<String, dynamic> json) =>
+    RspRecorderTransaction(
+      status: json['status'] as int?,
+      message: json['message'] as String?,
+      result: json['result'] as Map<String, dynamic>?,
+      timestamp: json['timestamp'] as num?,
+      error: json['error'] as String?,
+      path: json['path'] as String?,
+    )..resultData = json['resultData'] == null
+        ? null
+        : RspRecorderTransactionRes.fromJson(
+            json['resultData'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$RspRecorderTransactionToJson(
+        RspRecorderTransaction instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'message': instance.message,
+      'result': instance.result,
+      'timestamp': instance.timestamp,
+      'error': instance.error,
+      'path': instance.path,
+      'resultData': instance.resultData,
+    };
+
+RspRecorderGetScriptList _$RspRecorderGetScriptListFromJson(
+        Map<String, dynamic> json) =>
+    RspRecorderGetScriptList(
+      status: json['status'] as int?,
+      message: json['message'] as String?,
+      result: json['result'] as Map<String, dynamic>?,
+      timestamp: json['timestamp'] as num?,
+      error: json['error'] as String?,
+      path: json['path'] as String?,
+    )..resultData = json['resultData'] == null
+        ? null
+        : RecorderGetScriptListRes.fromJson(
+            json['resultData'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$RspRecorderGetScriptListToJson(
+        RspRecorderGetScriptList instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'message': instance.message,
+      'result': instance.result,
+      'timestamp': instance.timestamp,
+      'error': instance.error,
+      'path': instance.path,
+      'resultData': instance.resultData,
+    };
+
+ScriptModel _$ScriptModelFromJson(Map<String, dynamic> json) => ScriptModel(
+      script_name: json['script_name'] as String?,
+      create_datetime: json['create_datetime'] as String?,
+    );
+
+Map<String, dynamic> _$ScriptModelToJson(ScriptModel instance) =>
+    <String, dynamic>{
+      'script_name': instance.script_name,
+      'create_datetime': instance.create_datetime,
+    };
+
+RspRecorderGetVerificationInfo _$RspRecorderGetVerificationInfoFromJson(
+        Map<String, dynamic> json) =>
+    RspRecorderGetVerificationInfo(
+      status: json['status'] as int?,
+      message: json['message'] as String?,
+      result: json['result'] as Map<String, dynamic>?,
+      timestamp: json['timestamp'] as num?,
+      error: json['error'] as String?,
+      path: json['path'] as String?,
+    )..resultData = json['resultData'] == null
+        ? null
+        : RspRecorderGetVerificationInfoRes.fromJson(
+            json['resultData'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$RspRecorderGetVerificationInfoToJson(
+        RspRecorderGetVerificationInfo instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'message': instance.message,
+      'result': instance.result,
+      'timestamp': instance.timestamp,
+      'error': instance.error,
+      'path': instance.path,
+      'resultData': instance.resultData,
+    };

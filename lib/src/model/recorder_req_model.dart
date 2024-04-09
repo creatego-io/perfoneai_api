@@ -182,53 +182,28 @@ class ReqRecorderSaveScript {
   Map<String, dynamic> toJson() => _$ReqRecorderSaveScriptToJson(this);
 }
 
-//
-// @JsonSerializable()
-// class ReqRecorderInfo {
-//   final int? id;
-//
-//   ReqRecorderInfo({this.id});
-//
-//   Map<String, dynamic> toJson() => _$ReqRecorderInfoToJson(this);
-// }
-//
-// @JsonSerializable()
-// class ReqRecorderModify {
-//
-//   final int? id;
-//   final String? name;
-//   final String? os;
-//   final String? connect_type;
-//   final String? type;
-//   final String? ip;
-//   final String? port;
-//   final String? connect_id;
-//   final String? connect_pwd;
-//   final String? description;
-//   final String? update_user_id;
-//
-//   ReqRecorderModify({
-//       this.id,
-//       this.name,
-//       this.os,
-//       this.connect_type,
-//       this.type,
-//       this.ip,
-//       this.port,
-//       this.connect_id,
-//       this.connect_pwd,
-//       this.description,
-//       this.update_user_id});
-//
-//   Map<String, dynamic> toJson() => _$ReqRecorderModifyToJson(this);
-// }
-//
-//
-// @JsonSerializable()
-// class ReqRecorderDelete {
-//   final int? id;
-//
-//   ReqRecorderDelete({this.id});
-//
-//   Map<String, dynamic> toJson() => _$ReqRecorderDeleteToJson(this);
-// }
+@JsonSerializable()
+class ReqRecorderGetScriptList {
+  // final String? script_name;
+
+  ReqRecorderGetScriptList(
+      // {
+    // this.script_name,
+  // }
+  );
+
+  Map<String, dynamic> toJson() => _$ReqRecorderGetScriptListToJson(this);
+}
+
+@JsonSerializable()
+class ReqRecorderGetVerificationInfo {
+  final String? script_name;
+  final String? target_id;
+
+  ReqRecorderGetVerificationInfo({
+    this.script_name,
+    this.target_id,
+  });
+
+  Map<String, dynamic> toJson() => _$ReqRecorderGetVerificationInfoToJson(this);
+}

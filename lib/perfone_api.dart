@@ -13,3 +13,5 @@ export 'src/model/server_req_model.dart';
 export 'src/model/server_res_model.dart';
 export 'src/model/user_req_model.dart';
 export 'src/model/user_res_model.dart';
+export 'src/model/test_req_model.dart';
+export 'src/model/test_res_model.dart';

@@ -79,12 +79,12 @@ class ReqUserPwdModify {
 class ReqUserInfoModify {
   @JsonKey(name: 'user_id')
   final String? userId;
-  final String? password;
+  final String? name;
   final String? company;
   final String? update_user_id;
 
   ReqUserInfoModify(
-      {this.userId, this.password, this.update_user_id, this.company});
+      {this.userId, this.name, this.update_user_id, this.company});
 
   Map<String, dynamic> toJson() => _$ReqUserInfoModifyToJson(this);
 }

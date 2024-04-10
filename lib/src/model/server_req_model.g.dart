@@ -37,7 +37,7 @@ ReqServerCreate _$ReqServerCreateFromJson(Map<String, dynamic> json) =>
       connect_id: json['connect_id'] as String?,
       connect_pwd: json['connect_pwd'] as String?,
       description: json['description'] as String?,
-      update_user_id: json['update_user_id'] as String?,
+      create_user_id: json['create_user_id'] as String?,
     );
 
 Map<String, dynamic> _$ReqServerCreateToJson(ReqServerCreate instance) =>
@@ -51,7 +51,7 @@ Map<String, dynamic> _$ReqServerCreateToJson(ReqServerCreate instance) =>
       'connect_id': instance.connect_id,
       'connect_pwd': instance.connect_pwd,
       'description': instance.description,
-      'update_user_id': instance.update_user_id,
+      'create_user_id': instance.create_user_id,
     };
 
 ReqServerInfo _$ReqServerInfoFromJson(Map<String, dynamic> json) =>

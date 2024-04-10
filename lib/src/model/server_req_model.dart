@@ -30,7 +30,7 @@ class ReqServerCreate {
   final String? connect_id;
   final String? connect_pwd;
   final String? description;
-  final String? update_user_id;
+  final String? create_user_id;
 
   ReqServerCreate(
       {this.name,
@@ -42,7 +42,7 @@ class ReqServerCreate {
       this.connect_id,
       this.connect_pwd,
       this.description,
-      this.update_user_id});
+      this.create_user_id});
 
   Map<String, dynamic> toJson() => _$ReqServerCreateToJson(this);
 }

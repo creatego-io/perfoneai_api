@@ -9,14 +9,14 @@ part of 'recorder_req_model.dart';
 ReqRecorderGetProperty _$ReqRecorderGetPropertyFromJson(
         Map<String, dynamic> json) =>
     ReqRecorderGetProperty(
-      script_name: json['script_name'] as String?,
+      target_id: json['target_id'] as String?,
       xml: json['xml'] as String?,
     );
 
 Map<String, dynamic> _$ReqRecorderGetPropertyToJson(
         ReqRecorderGetProperty instance) =>
     <String, dynamic>{
-      'script_name': instance.script_name,
+      'target_id': instance.target_id,
       'xml': instance.xml,
     };
 

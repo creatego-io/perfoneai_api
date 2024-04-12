@@ -4,10 +4,10 @@ part 'recorder_req_model.g.dart';
 
 @JsonSerializable()
 class ReqRecorderGetProperty {
-  final String? script_name;
+  final String? target_id;
   final String? xml;
 
-  ReqRecorderGetProperty({this.script_name, this.xml});
+  ReqRecorderGetProperty({this.target_id, this.xml});
 
   Map<String, dynamic> toJson() => _$ReqRecorderGetPropertyToJson(this);
 }

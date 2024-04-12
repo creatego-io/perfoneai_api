@@ -75,7 +75,7 @@ ReqRecorderStartRecording _$ReqRecorderStartRecordingFromJson(
       transaction_name: json['transaction_name'] as String?,
       num: json['num'] as int?,
       is_static_file: json['is_static_file'] as bool?,
-      websocket_session_id: json['websocket_session_id'] as bool?,
+      websocket_session_id: json['websocket_session_id'] as String?,
     );
 
 Map<String, dynamic> _$ReqRecorderStartRecordingToJson(

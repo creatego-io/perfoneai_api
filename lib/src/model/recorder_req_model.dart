@@ -61,7 +61,7 @@ class ReqRecorderStartRecording {
   final String? transaction_name;
   final int? num;
   final bool? is_static_file;
-  final bool? websocket_session_id;
+  final String? websocket_session_id;
 
   ReqRecorderStartRecording({
     this.script_name,

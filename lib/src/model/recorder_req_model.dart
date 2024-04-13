@@ -118,11 +118,11 @@ class ReqRecorderAddLoop {
 
 @JsonSerializable()
 class ReqRecorderAddThinkTime {
-  final String? target_id;
+  final String? transaction_id;
   final String? think_time;
   final String? xml;
 
-  ReqRecorderAddThinkTime({this.target_id, this.think_time, this.xml});
+  ReqRecorderAddThinkTime({this.transaction_id, this.think_time, this.xml});
 
   Map<String, dynamic> toJson() => _$ReqRecorderAddThinkTimeToJson(this);
 }

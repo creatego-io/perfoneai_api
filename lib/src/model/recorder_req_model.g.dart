@@ -147,7 +147,7 @@ Map<String, dynamic> _$ReqRecorderAddLoopToJson(ReqRecorderAddLoop instance) =>
 ReqRecorderAddThinkTime _$ReqRecorderAddThinkTimeFromJson(
         Map<String, dynamic> json) =>
     ReqRecorderAddThinkTime(
-      target_id: json['target_id'] as String?,
+      transaction_id: json['transaction_id'] as String?,
       think_time: json['think_time'] as String?,
       xml: json['xml'] as String?,
     );
@@ -155,7 +155,7 @@ ReqRecorderAddThinkTime _$ReqRecorderAddThinkTimeFromJson(
 Map<String, dynamic> _$ReqRecorderAddThinkTimeToJson(
         ReqRecorderAddThinkTime instance) =>
     <String, dynamic>{
-      'target_id': instance.target_id,
+      'transaction_id': instance.transaction_id,
       'think_time': instance.think_time,
       'xml': instance.xml,
     };

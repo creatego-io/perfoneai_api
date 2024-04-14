@@ -83,4 +83,8 @@ class Recorder extends __Recorder with PerfWebSocket {
   Future<PerfWSConnection> recording() async {
     return connect('$baseUrl/recording');
   }
+
+  Future<PerfWSConnection> verification() async {
+    return connect('$baseUrl/verification');
+  }
 }

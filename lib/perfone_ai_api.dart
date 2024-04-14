@@ -43,7 +43,7 @@ class PerfWSConnection {
 
   void send(dynamic data) {
     if (json) {
-      data = jsonEncode(json);
+      data = jsonEncode(data);
     }
 
     channel.sink.add(data);

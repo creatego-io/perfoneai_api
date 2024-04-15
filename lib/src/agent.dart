@@ -33,7 +33,7 @@ class Agent extends __Agent with PerfWebSocket {
 
   Agent._internal(Dio dio, {String? baseUrl}) : super(dio, baseUrl: baseUrl);
 
-  Future<PerfWSConnection> checkStatusList() async {
-    return connect('$baseUrl/agent/checkStatusList');
+  Future<PerfWSConnection> agentStatusList() async {
+    return connect('$baseUrl/agentStatusList');
   }
 }

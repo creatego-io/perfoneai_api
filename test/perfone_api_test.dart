@@ -103,14 +103,7 @@ void main() {
        */
     });
     test('checkStatusList', () async {
-      PerfWSConnection con = await PerfOneAIApi.agent.checkStatusList();
-      con.listen((data) {
-        print('ids: ${data['ids']}');
-      });
-      await pause(3);
-    });
-    test('checkStatusList', () async {
-      PerfWSConnection con = await PerfOneAIApi.agent.checkStatusList();
+      PerfWSConnection con = await PerfOneAIApi.agent.agentStatusList();
       con.listen((data) {
         print('ids: ${data['ids']}');
       });

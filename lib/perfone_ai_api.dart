@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+import 'package:web_socket_channel/status.dart' as status;
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 import 'src/agent.dart';
@@ -46,6 +48,10 @@ class PerfWSConnection {
       data = jsonEncode(data);
     }
 
+    if (!PerfOneAIApi.disableLog) {
+      debugPrint('WS>> $data');
+    }
+
     channel.sink.add(data);
   }
 
@@ -55,7 +61,19 @@ class PerfWSConnection {
         data = jsonDecode(data);
       }
 
+      if (!PerfOneAIApi.disableLog) {
+        debugPrint('WS<< $data');
+      }
+
       listener(data);
     });
+  }
+
+  void close([int code = status.normalClosure]) {
+    channel.sink.close(code);
+
+    if (!PerfOneAIApi.disableLog) {
+      debugPrint('WS closed');
+    }
   }
 }

@@ -1,4 +1,5 @@
 import "package:dio/dio.dart";
+import "package:flutter/foundation.dart";
 import "package:pretty_dio_logger/pretty_dio_logger.dart";
 import "package:web_socket_channel/web_socket_channel.dart";
 
@@ -101,8 +102,17 @@ mixin PerfWebSocket {
         break;
     }
 
+    if (!PerfOneAIApi.disableLog) {
+      debugPrint('WS connecting... $uri');
+    }
+
     final channel = WebSocketChannel.connect(uri);
     await channel.ready;
+
+    if (!PerfOneAIApi.disableLog) {
+      debugPrint('WS connected');
+    }
+
     return PerfWSConnection(channel, json: json);
   }
 }

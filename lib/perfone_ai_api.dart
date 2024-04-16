@@ -60,7 +60,15 @@ class PerfWSConnection {
   void listen(void Function(dynamic) listener) {
     channel.stream.listen((data) {
       if (json) {
-        data = jsonDecode(data);
+        try {
+          data = jsonDecode(data);
+        } catch (e) {
+          debugPrint('WS Parsing Error<< $data');
+          String text = data.toString();
+          text= text.replaceAll('\"[', '[');
+          text=text.replaceAll(']\"', ']');
+          data = jsonDecode(text);
+        }
       }
 
       if (!PerfOneAIApi.disableLog) {

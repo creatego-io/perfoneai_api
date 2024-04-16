@@ -65,7 +65,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
     };
 
 AgentModel _$AgentModelFromJson(Map<String, dynamic> json) => AgentModel(
-      id: json['id'] as num?,
+      id: json['id'] as int?,
       name: json['name'] as String?,
       ip: json['ip'] as String?,
       status: json['status'] as String?,
@@ -90,7 +90,7 @@ Map<String, dynamic> _$AgentModelToJson(AgentModel instance) =>
     };
 
 ServerModel _$ServerModelFromJson(Map<String, dynamic> json) => ServerModel(
-      id: json['id'] as num?,
+      id: json['id'] as int?,
       name: json['name'] as String?,
       os: json['os'] as String?,
       connect_type: json['connect_type'] as String?,
@@ -127,7 +127,7 @@ Map<String, dynamic> _$ServerModelToJson(ServerModel instance) =>
     };
 
 ReportModel _$ReportModelFromJson(Map<String, dynamic> json) => ReportModel(
-      id: json['id'] as num?,
+      id: json['id'] as int?,
       name: json['name'] as String?,
       status: json['status'] as String?,
       start_datetime: json['start_datetime'] as String?,

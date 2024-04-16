@@ -113,7 +113,7 @@ class UserModel {
 
 @JsonSerializable()
 class AgentModel {
-  num? id;
+  int? id;
   String? name;
   String? ip;
   String? status;
@@ -148,7 +148,7 @@ class AgentModel {
 
 @JsonSerializable()
 class ServerModel {
-  num? id;
+  int? id;
   String? name;
   String? os;
   String? connect_type;
@@ -194,7 +194,7 @@ class ServerModel {
 
 @JsonSerializable()
 class ReportModel {
-  num? id;
+  int? id;
   String? name;
   String? status;
   String? start_datetime;

@@ -59,7 +59,7 @@ Map<String, dynamic> _$ScenarioItemModelToJson(ScenarioItemModel instance) =>
 
 TestServerModel _$TestServerModelFromJson(Map<String, dynamic> json) =>
     TestServerModel(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
     );
 
 Map<String, dynamic> _$TestServerModelToJson(TestServerModel instance) =>

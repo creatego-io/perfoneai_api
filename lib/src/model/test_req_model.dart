@@ -84,7 +84,7 @@ class ScenarioItemModel {
 
 @JsonSerializable()
 class TestServerModel {
-  String? id;
+  int? id;
 
   TestServerModel({this.id});
 

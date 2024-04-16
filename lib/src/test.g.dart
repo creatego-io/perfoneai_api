@@ -75,7 +75,7 @@ class __Test implements _Test {
   }
 
   @override
-  Future<RspMessage> testStop(ReqTestTestStop request) async {
+  Future<RspMessage> stopTest(ReqTestStopTest request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -89,7 +89,7 @@ class __Test implements _Test {
     )
             .compose(
               _dio.options,
-              '/test/testStop',
+              '/test/stopTest',
               queryParameters: queryParameters,
               data: _data,
             )

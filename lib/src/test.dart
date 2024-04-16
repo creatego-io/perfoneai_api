@@ -19,8 +19,8 @@ abstract class _Test {
   Future<RspTestLoadData> loadData(@Body() ReqTestLoadData request);
   @POST('/test/startTest')
   Future<RspTestStartTest> startTest(@Body() ReqTestStartTest request);
-  @POST('/test/testStop')
-  Future<RspMessage> testStop(@Body() ReqTestTestStop request);
+  @POST('/test/stopTest')
+  Future<RspMessage> stopTest(@Body() ReqTestStopTest request);
   @POST('/test/genReport')
   Future<RspMessage> genReport(@Body() ReqTestGenReport request);
 }

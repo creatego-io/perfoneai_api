@@ -102,14 +102,14 @@ class TestServerModel {
 
 
 @JsonSerializable()
-class ReqTestTestStop {
+class ReqTestStopTest {
   final String? result_file_name;
   final List<TestAgentModel>? agent_list;
 
 
-  ReqTestTestStop({this.result_file_name, this.agent_list});
+  ReqTestStopTest({this.result_file_name, this.agent_list});
 
-  Map<String, dynamic> toJson() => _$ReqTestTestStopToJson(this);
+  Map<String, dynamic> toJson() => _$ReqTestStopTestToJson(this);
 }
 
 @JsonSerializable()

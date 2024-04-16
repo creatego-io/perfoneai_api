@@ -67,15 +67,15 @@ Map<String, dynamic> _$TestServerModelToJson(TestServerModel instance) =>
       'id': instance.id,
     };
 
-ReqTestTestStop _$ReqTestTestStopFromJson(Map<String, dynamic> json) =>
-    ReqTestTestStop(
+ReqTestStopTest _$ReqTestStopTestFromJson(Map<String, dynamic> json) =>
+    ReqTestStopTest(
       result_file_name: json['result_file_name'] as String?,
       agent_list: (json['agent_list'] as List<dynamic>?)
           ?.map((e) => TestAgentModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$ReqTestTestStopToJson(ReqTestTestStop instance) =>
+Map<String, dynamic> _$ReqTestStopTestToJson(ReqTestStopTest instance) =>
     <String, dynamic>{
       'result_file_name': instance.result_file_name,
       'agent_list': instance.agent_list,

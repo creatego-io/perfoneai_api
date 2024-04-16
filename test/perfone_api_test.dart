@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:perfone_api/perfone_api.dart';
 
@@ -53,7 +55,6 @@ void main() {
     //   ));
     //   print("duplicate : ${rsp.toJson()}");
     // });
-
   });
 
   group('Agent', () {
@@ -177,8 +178,8 @@ void main() {
       await pause(3);
     });
     test('Recorder-list', () async {
-      RspRecorderGetScriptList rsp = await PerfOneAIApi.recorder.getScriptList(ReqRecorderGetScriptList(
-      ));
+      RspRecorderGetScriptList rsp =
+          await PerfOneAIApi.recorder.getScriptList(ReqRecorderGetScriptList());
       print("list : ${rsp.toJson()}");
       /*
  {status: 404, message: null, result: null, timestamp: 1712146350638, error: Not Found, path: /perfone/v1/recorder/list, resultData: null}
@@ -201,11 +202,11 @@ void main() {
 
        */
     });
+
     test('Report-download', () async {
-      ResData rsp = await PerfOneAIApi.report.download(ReqReportDownload(
-        id: 1,
-      ));
-      print("download : ${rsp.toJson()}");
+      RspReportDownload rsp =
+          await PerfOneAIApi.reportSilent.download(ReqReportDownload(id: 4));
+      print(rsp.toJson());
       /*
  {status: 400, message: 보고서 정보가 존재하지 않습니다., result: null, timestamp: 1712146509867, error: Bad Request, path: /perfone/v1/report/download, resultData: null}
        */
@@ -213,14 +214,13 @@ void main() {
 
     test('Report-delete', () async {
       ResData rsp = await PerfOneAIApi.report.delete(ReqReportDelete(
-        id: 100,
+        id: 1,
       ));
       print("delete : ${rsp.toJson()}");
       /*
 {status: 400, message: 보고서 정보가 존재하지 않습니다., result: null, timestamp: 1712146522904, error: Bad Request, path: /perfone/v1/report/delete, resultData: null}
        */
     });
-
   });
 }
 

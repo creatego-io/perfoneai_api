@@ -8,8 +8,8 @@ part of 'report.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _Report implements Report {
-  _Report(
+class __Report implements _Report {
+  __Report(
     this._dio, {
     this.baseUrl,
   });
@@ -47,17 +47,19 @@ class _Report implements Report {
   }
 
   @override
-  Future<RspMessage> download(ReqReportDownload request) async {
+  Future<HttpResponse<List<int>>> downloadInternal(
+      ReqReportDownload request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<RspMessage>(Options(
+        .fetch<List<dynamic>>(_setStreamType<HttpResponse<List<int>>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      responseType: ResponseType.bytes,
     )
             .compose(
               _dio.options,
@@ -70,8 +72,9 @@ class _Report implements Report {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = RspMessage.fromJson(_result.data!);
-    return value;
+    final value = _result.data!.cast<int>();
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   @override

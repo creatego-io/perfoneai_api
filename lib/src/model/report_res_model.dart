@@ -128,3 +128,30 @@ class ReportInfoRes {
     return toJson().toString();
   }
 }
+
+class RspReportDownload extends ResData {
+  String? filename;
+  List<int>? content;
+
+  RspReportDownload({
+    required super.status,
+    required super.message,
+    this.filename,
+    this.content,
+  });
+
+  RspReportDownload.fromJson(json) : super.fromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => status != 200
+      ? super.toJson()
+      : {
+          'status': status,
+          'message': message,
+          'filename': filename,
+          'contentLength': content?.length,
+        };
+
+  @override
+  fromJsonResult() {}
+}

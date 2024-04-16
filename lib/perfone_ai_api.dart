@@ -28,6 +28,8 @@ class PerfOneAIApi {
 
   static Report get report => Report();
 
+  static Report get reportSilent => Report(disableLog: true);
+
   static Server get server => Server();
 
   static Test get test => Test();

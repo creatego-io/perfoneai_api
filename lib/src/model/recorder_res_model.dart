@@ -214,7 +214,7 @@ class RspRecorderTransaction extends ResData {
 }
 
 class RspRecorderTransactionRes {
-  RecordingTreeModel? tree;
+  TransactionModel? tree;
   String? xml;
   String? erl;
   String? message;
@@ -227,7 +227,7 @@ class RspRecorderTransactionRes {
   });
 
   RspRecorderTransactionRes.fromJson(Map json)
-      : tree = RecordingTreeModel.fromJson(json['tree'] ?? <String, dynamic>{}),
+      : tree = TransactionModel.fromJson(json['tree'] ?? <String, dynamic>{}),
         xml = json['xml'],
         erl = json['erl'],
         message = json['message'];
@@ -244,43 +244,6 @@ class RspRecorderTransactionRes {
   @override
   String toString() {
     return toJson().toString();
-  }
-}
-
-class RecordingTreeModel {
-  String id;
-  String name;
-  List<TransactionModel?>? children;
-
-  RecordingTreeModel({
-    required this.id,
-    required this.name,
-    required this.children,
-  });
-
-  RecordingTreeModel.fromJson(Map json)
-      : children = json['children'] == null
-            ? <TransactionModel>[]
-            : json['children']
-                .map<TransactionModel>(
-                    (json) => TransactionModel.fromJson(json))
-                .toList(),
-        id = json['id'],
-        name = json['name'];
-
-  Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    List list = [];
-    if (children != null) {
-      for (TransactionModel? item in children!) {
-        list.add(item?.toJson());
-      }
-    }
-    map['children'] = list;
-    map['id'] = id;
-    map['name'] = name;
-
-    return map;
   }
 }
 

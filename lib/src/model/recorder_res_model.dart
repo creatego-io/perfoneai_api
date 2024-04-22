@@ -50,11 +50,11 @@ class RspRecorderGetPropertyRes {
 
   RspRecorderGetPropertyRes.fromJson(Map json)
       : httpRequestLine = HttpRequestLineModel.fromJson(
-            json['httpRequestLine'] ?? <String, dynamic>{}),
+      json['httpRequestLine'] ?? <String, dynamic>{}),
         httpHeader =
-            HttpHeaderModel.fromJson(json['httpHeader'] ?? <String, dynamic>{}),
+        HttpHeaderModel.fromJson(json['httpHeader'] ?? <String, dynamic>{}),
         httpCookie =
-            HttpCookieModel.fromJson(json['httpCookie'] ?? <String, dynamic>{}),
+        HttpCookieModel.fromJson(json['httpCookie'] ?? <String, dynamic>{}),
         messageBody = MessageBodyModel.fromJson(
             json['messageBody'] ?? <String, dynamic>{}),
         message = json['message'];
@@ -116,6 +116,7 @@ class HttpHeaderModel {
   String? SecFetchDest;
   @JsonKey(name: 'Sec-Fetch-Site')
   String? SecFetchSite;
+  String? Host;
   @JsonKey(name: 'Accept-Encoding')
   String? AcceptEncoding;
   String? Timestamp;
@@ -125,19 +126,22 @@ class HttpHeaderModel {
   @JsonKey(name: 'Accept-Language')
   String? AcceptLanguage;
 
+
   HttpHeaderModel(
       {this.PORT,
-      this.Accept,
-      this.UserTransaction,
-      this.Referer,
-      this.Connection,
-      this.SecFetchDest,
-      this.SecFetchSite,
-      this.AcceptEncoding,
-      this.Timestamp,
-      this.SecFetchMode,
-      this.Authorization,
-      this.AcceptLanguage});
+        this.Accept,
+        this.UserTransaction,
+        this.Referer,
+        this.Connection,
+        this.SecFetchDest,
+        this.SecFetchSite,
+        this.Host,
+        this.AcceptEncoding,
+        this.Timestamp,
+        this.SecFetchMode,
+        this.Authorization,
+        this.AcceptLanguage,
+      });
 
   factory HttpHeaderModel.fromJson(Map<String, dynamic> json) =>
       _$HttpHeaderModelFromJson(json);
@@ -260,11 +264,11 @@ class TransactionModel {
 
   TransactionModel.fromJson(Map json)
       : children = json['children'] == null
-            ? <TransactionModel>[]
-            : json['children']
-                .map<TransactionModel>(
-                    (json) => TransactionModel.fromJson(json))
-                .toList(),
+      ? <TransactionModel>[]
+      : json['children']
+      .map<TransactionModel>(
+          (json) => TransactionModel.fromJson(json))
+      .toList(),
         id = json['id'],
         name = json['name'];
 

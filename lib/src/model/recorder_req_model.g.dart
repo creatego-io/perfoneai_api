@@ -239,3 +239,39 @@ Map<String, dynamic> _$ReqRecorderGetVerificationInfoToJson(
       'script_name': instance.script_name,
       'target_id': instance.target_id,
     };
+
+ReqRecorderStartTcpRecording _$ReqRecorderStartTcpRecordingFromJson(
+        Map<String, dynamic> json) =>
+    ReqRecorderStartTcpRecording(
+      script_name: json['script_name'] as String?,
+      transaction_name: json['transaction_name'] as String?,
+      num: json['num'] as int?,
+      ip: json['ip'] as String?,
+      port: json['port'] as int?,
+      interface_name: json['interface_name'] as String?,
+      websocket_session_id: json['websocket_session_id'] as String?,
+    );
+
+Map<String, dynamic> _$ReqRecorderStartTcpRecordingToJson(
+        ReqRecorderStartTcpRecording instance) =>
+    <String, dynamic>{
+      'script_name': instance.script_name,
+      'transaction_name': instance.transaction_name,
+      'num': instance.num,
+      'ip': instance.ip,
+      'port': instance.port,
+      'interface_name': instance.interface_name,
+      'websocket_session_id': instance.websocket_session_id,
+    };
+
+ReqRecorderAutoCorrelation _$ReqRecorderAutoCorrelationFromJson(
+        Map<String, dynamic> json) =>
+    ReqRecorderAutoCorrelation(
+      xml: json['xml'] as String?,
+    );
+
+Map<String, dynamic> _$ReqRecorderAutoCorrelationToJson(
+        ReqRecorderAutoCorrelation instance) =>
+    <String, dynamic>{
+      'xml': instance.xml,
+    };

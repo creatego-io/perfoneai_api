@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:perfone_api/perfone_api.dart';
 
@@ -184,6 +182,10 @@ void main() {
       /*
  {status: 404, message: null, result: null, timestamp: 1712146350638, error: Not Found, path: /perfone/v1/recorder/list, resultData: null}
        */
+    });
+    test('Get interfaces', () async {
+      RspRecorderInterface rsp = await PerfOneAIApi.recorder.getTcpInterface();
+      print('interface names: ${rsp.names}');
     });
   });
 

@@ -186,11 +186,10 @@ class ReqRecorderSaveScript {
 class ReqRecorderGetScriptList {
   // final String? script_name;
 
-  ReqRecorderGetScriptList(
-      // {
-    // this.script_name,
-  // }
-  );
+  ReqRecorderGetScriptList(// {
+      // this.script_name,
+      // }
+      );
 
   Map<String, dynamic> toJson() => _$ReqRecorderGetScriptListToJson(this);
 }
@@ -206,4 +205,36 @@ class ReqRecorderGetVerificationInfo {
   });
 
   Map<String, dynamic> toJson() => _$ReqRecorderGetVerificationInfoToJson(this);
+}
+
+@JsonSerializable()
+class ReqRecorderStartTcpRecording {
+  final String? script_name;
+  final String? transaction_name;
+  final int? num;
+  final String? ip;
+  final int? port;
+  final String? interface_name;
+  final String? websocket_session_id;
+
+  ReqRecorderStartTcpRecording({
+    this.script_name,
+    this.transaction_name,
+    this.num,
+    this.ip,
+    this.port,
+    this.interface_name,
+    this.websocket_session_id,
+  });
+
+  Map<String, dynamic> toJson() => _$ReqRecorderStartTcpRecordingToJson(this);
+}
+
+@JsonSerializable()
+class ReqRecorderAutoCorrelation {
+  final String? xml;
+
+  ReqRecorderAutoCorrelation({this.xml});
+
+  Map<String, dynamic> toJson() => _$ReqRecorderAutoCorrelationToJson(this);
 }

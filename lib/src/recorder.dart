@@ -50,7 +50,8 @@ abstract class _Recorder {
   Future<RspRecorderTransaction> addRdz(@Body() ReqRecorderAddRdz request);
 
   @POST('/recorder/getScriptList')
-  Future<RspRecorderGetScriptList> getScriptList(@Body() ReqRecorderGetScriptList request);
+  Future<RspRecorderGetScriptList> getScriptList(
+      @Body() ReqRecorderGetScriptList request);
 
   @POST('/recorder/loadScript')
   Future<RspRecorderTransaction> loadScript(
@@ -63,7 +64,31 @@ abstract class _Recorder {
   Future<RspMessage> saveScript(@Body() ReqRecorderSaveScript request);
 
   @POST('/recorder/getVerificationInfo')
-  Future<RspRecorderGetVerificationInfo> getVerificationInfo(@Body() ReqRecorderGetVerificationInfo request);
+  Future<RspRecorderGetVerificationInfo> getVerificationInfo(
+      @Body() ReqRecorderGetVerificationInfo request);
+
+  @POST('/recorder/tcp/getInterface')
+  Future<RspRecorderInterface> getTcpInterface();
+
+  @POST('/recorder/tcp/createTransaction')
+  Future<RspMessage> createTcpTransaction(
+      @Body() ReqRecorderCreateTransaction request);
+
+  @POST('/recorder/tcp/startRecording')
+  Future<RspMessage> startTcpRecording(
+      @Body() ReqRecorderStartTcpRecording request);
+
+  @POST('/recorder/tcp/pauseRecording')
+  Future<RspMessage> pauseTcpRecording(
+      @Body() ReqRecorderPauseRecording request);
+
+  @POST('/recorder/tcp/stopRecording')
+  Future<RspRecorderTransaction> stopTcpRecording(
+      @Body() ReqRecorderStopRecording request);
+
+  @POST('/recorder/autoCorrelation')
+  Future<RspRecorderAutoCorrelation> autoCorrelation(
+      @Body() ReqRecorderAutoCorrelation request);
 }
 
 class Recorder extends __Recorder with PerfWebSocket {

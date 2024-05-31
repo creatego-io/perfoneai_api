@@ -50,11 +50,11 @@ class RspRecorderGetPropertyRes {
 
   RspRecorderGetPropertyRes.fromJson(Map json)
       : httpRequestLine = HttpRequestLineModel.fromJson(
-      json['httpRequestLine'] ?? <String, dynamic>{}),
+            json['httpRequestLine'] ?? <String, dynamic>{}),
         httpHeader =
-        HttpHeaderModel.fromJson(json['httpHeader'] ?? <String, dynamic>{}),
+            HttpHeaderModel.fromJson(json['httpHeader'] ?? <String, dynamic>{}),
         httpCookie =
-        HttpCookieModel.fromJson(json['httpCookie'] ?? <String, dynamic>{}),
+            HttpCookieModel.fromJson(json['httpCookie'] ?? <String, dynamic>{}),
         messageBody = MessageBodyModel.fromJson(
             json['messageBody'] ?? <String, dynamic>{}),
         message = json['message'];
@@ -126,22 +126,21 @@ class HttpHeaderModel {
   @JsonKey(name: 'Accept-Language')
   String? AcceptLanguage;
 
-
-  HttpHeaderModel(
-      {this.PORT,
-        this.Accept,
-        this.UserTransaction,
-        this.Referer,
-        this.Connection,
-        this.SecFetchDest,
-        this.SecFetchSite,
-        this.Host,
-        this.AcceptEncoding,
-        this.Timestamp,
-        this.SecFetchMode,
-        this.Authorization,
-        this.AcceptLanguage,
-      });
+  HttpHeaderModel({
+    this.PORT,
+    this.Accept,
+    this.UserTransaction,
+    this.Referer,
+    this.Connection,
+    this.SecFetchDest,
+    this.SecFetchSite,
+    this.Host,
+    this.AcceptEncoding,
+    this.Timestamp,
+    this.SecFetchMode,
+    this.Authorization,
+    this.AcceptLanguage,
+  });
 
   factory HttpHeaderModel.fromJson(Map<String, dynamic> json) =>
       _$HttpHeaderModelFromJson(json);
@@ -264,11 +263,11 @@ class TransactionModel {
 
   TransactionModel.fromJson(Map json)
       : children = json['children'] == null
-      ? <TransactionModel>[]
-      : json['children']
-      .map<TransactionModel>(
-          (json) => TransactionModel.fromJson(json))
-      .toList(),
+            ? <TransactionModel>[]
+            : json['children']
+                .map<TransactionModel>(
+                    (json) => TransactionModel.fromJson(json))
+                .toList(),
         id = json['id'],
         name = json['name'];
 
@@ -334,11 +333,11 @@ class RecorderGetScriptListRes {
 
   RecorderGetScriptListRes.fromJson(Map json)
       : script_list = json['script_list'] == null
-      ? <ScriptModel>[]
-      : json['script_list']
-      .map<ScriptModel>((json) => ScriptModel.fromJson(json))
-      .toList(),
-        message =json['message'];
+            ? <ScriptModel>[]
+            : json['script_list']
+                .map<ScriptModel>((json) => ScriptModel.fromJson(json))
+                .toList(),
+        message = json['message'];
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
@@ -381,9 +380,6 @@ class ScriptModel {
   }
 }
 
-
-
-
 @JsonSerializable()
 class RspRecorderGetVerificationInfo extends ResData {
   RspRecorderGetVerificationInfoRes? resultData;
@@ -398,7 +394,8 @@ class RspRecorderGetVerificationInfo extends ResData {
   });
 
   factory RspRecorderGetVerificationInfo.fromJson(json) {
-    RspRecorderGetVerificationInfo res = _$RspRecorderGetVerificationInfoFromJson(json);
+    RspRecorderGetVerificationInfo res =
+        _$RspRecorderGetVerificationInfoFromJson(json);
     res.fromJsonResult();
     return res;
   }
@@ -426,11 +423,9 @@ class RspRecorderGetVerificationInfoRes {
   });
 
   RspRecorderGetVerificationInfoRes.fromJson(Map json)
-      :
-        request =json['request'],
-        response =json['response'],
-        message =json['message']
-  ;
+      : request = json['request'],
+        response = json['response'],
+        message = json['message'];
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
@@ -443,5 +438,52 @@ class RspRecorderGetVerificationInfoRes {
   @override
   String toString() {
     return toJson().toString();
+  }
+}
+
+class RspRecorderInterface extends ResData {
+  List<String>? names;
+
+  RspRecorderInterface({
+    super.status,
+    super.message,
+    super.result,
+    super.timestamp,
+    super.error,
+    super.path,
+  });
+
+  RspRecorderInterface.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
+    fromJsonResult();
+  }
+
+  @override
+  fromJsonResult() {
+    names = result?['interfaceList']
+            .map<String>((i) => i['name'] as String)
+            .toList() ??
+        [];
+  }
+}
+
+class RspRecorderAutoCorrelation extends ResData {
+  String? xml;
+
+  RspRecorderAutoCorrelation({
+    super.status,
+    super.message,
+    super.result,
+    super.timestamp,
+    super.error,
+    super.path,
+  });
+
+  RspRecorderAutoCorrelation.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
+    fromJsonResult();
+  }
+
+  @override
+  fromJsonResult() {
+    xml = result?['xml'];
   }
 }

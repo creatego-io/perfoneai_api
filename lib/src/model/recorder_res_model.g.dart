@@ -108,6 +108,19 @@ Map<String, dynamic> _$MessageBodyModelToJson(MessageBodyModel instance) =>
       'PostData': instance.PostData,
     };
 
+TcpInformationModel _$TcpInformationModelFromJson(Map<String, dynamic> json) =>
+    TcpInformationModel(
+      port: json['PORT'] as String?,
+      ip: json['IP'] as String?,
+    );
+
+Map<String, dynamic> _$TcpInformationModelToJson(
+        TcpInformationModel instance) =>
+    <String, dynamic>{
+      'PORT': instance.port,
+      'IP': instance.ip,
+    };
+
 RspRecorderTransaction _$RspRecorderTransactionFromJson(
         Map<String, dynamic> json) =>
     RspRecorderTransaction(

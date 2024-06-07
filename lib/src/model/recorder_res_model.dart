@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:perfone_api/perfone_api.dart';
 import 'package:perfone_api/src/model/data_set.dart';
 
 part 'recorder_res_model.g.dart';
@@ -38,33 +39,43 @@ class RspRecorderGetPropertyRes {
   HttpHeaderModel? httpHeader;
   HttpCookieModel? httpCookie;
   MessageBodyModel? messageBody;
+  TcpInformationModel? tcpInformation;
   String? message;
 
   RspRecorderGetPropertyRes({
-    required this.httpRequestLine,
-    required this.httpHeader,
-    required this.httpCookie,
-    required this.messageBody,
-    required this.message,
+    this.httpRequestLine,
+    this.httpHeader,
+    this.httpCookie,
+    this.messageBody,
+    this.tcpInformation,
+    this.message,
   });
 
   RspRecorderGetPropertyRes.fromJson(Map json)
-      : httpRequestLine = HttpRequestLineModel.fromJson(
-            json['httpRequestLine'] ?? <String, dynamic>{}),
-        httpHeader =
-            HttpHeaderModel.fromJson(json['httpHeader'] ?? <String, dynamic>{}),
-        httpCookie =
-            HttpCookieModel.fromJson(json['httpCookie'] ?? <String, dynamic>{}),
-        messageBody = MessageBodyModel.fromJson(
-            json['messageBody'] ?? <String, dynamic>{}),
+      : httpRequestLine = json['httpRequestLine'] != null
+            ? HttpRequestLineModel.fromJson(json['httpRequestLine'])
+            : null,
+        httpHeader = json['httpHeader'] != null
+            ? HttpHeaderModel.fromJson(json['httpHeader'])
+            : null,
+        httpCookie = json['httpCookie'] != null
+            ? HttpCookieModel.fromJson(json['httpCookie'])
+            : null,
+        messageBody = json['messageBody'] != null
+            ? MessageBodyModel.fromJson(json['messageBody'])
+            : null,
+        tcpInformation = json['tcpInfomation'] != null
+            ? TcpInformationModel.fromJson(json['tcpInfomation'])
+            : null,
         message = json['message'];
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
-    map['httpRequestLine'] = httpRequestLine!.toJson();
-    map['httpHeader'] = httpHeader!.toJson();
-    map['httpCookie'] = httpCookie!.toJson();
-    map['messageBody'] = messageBody!.toJson();
+    map['httpRequestLine'] = httpRequestLine?.toJson();
+    map['httpHeader'] = httpHeader?.toJson();
+    map['httpCookie'] = httpCookie?.toJson();
+    map['messageBody'] = messageBody?.toJson();
+    map['tcpInformation'] = tcpInformation?.toJson();
     map['message'] = message;
     return map;
   }
@@ -184,6 +195,24 @@ class MessageBodyModel {
   String toString() {
     return toJson().toString();
   }
+}
+
+@JsonSerializable()
+class TcpInformationModel {
+  @JsonKey(name: 'PORT')
+  String? port;
+  @JsonKey(name: 'IP')
+  String? ip;
+
+  TcpInformationModel({this.port, this.ip});
+
+  factory TcpInformationModel.fromJson(Map<String, dynamic> json) =>
+      _$TcpInformationModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TcpInformationModelToJson(this);
+
+  @override
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable()
@@ -453,7 +482,8 @@ class RspRecorderInterface extends ResData {
     super.path,
   });
 
-  RspRecorderInterface.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
+  RspRecorderInterface.fromJson(Map<String, dynamic> json)
+      : super.fromJson(json) {
     fromJsonResult();
   }
 
@@ -478,7 +508,8 @@ class RspRecorderAutoCorrelation extends ResData {
     super.path,
   });
 
-  RspRecorderAutoCorrelation.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
+  RspRecorderAutoCorrelation.fromJson(Map<String, dynamic> json)
+      : super.fromJson(json) {
     fromJsonResult();
   }
 

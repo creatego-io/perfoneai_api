@@ -63,11 +63,16 @@ class PerfWSConnection {
         try {
           data = jsonDecode(data);
         } catch (e) {
-          // debugPrint('WS Parsing Error<< $data');
           String text = data.toString();
-          text= text.replaceAll('\"[', '[');
-          text=text.replaceAll(']\"', ']');
-          data = jsonDecode(text);
+          text = text.replaceAll('\"[', '[');
+          text = text.replaceAll(']\"', ']');
+
+          try {
+            data = jsonDecode(text);
+          } catch (e) {
+            debugPrint('WS Parsing Error<< $data');
+            return;
+          }
         }
       }
 

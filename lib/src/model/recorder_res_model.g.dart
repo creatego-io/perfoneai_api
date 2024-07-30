@@ -88,16 +88,6 @@ Map<String, dynamic> _$HttpHeaderModelToJson(HttpHeaderModel instance) =>
       'Accept-Language': instance.AcceptLanguage,
     };
 
-HttpCookieModel _$HttpCookieModelFromJson(Map<String, dynamic> json) =>
-    HttpCookieModel(
-      JSESSIONID: json['JSESSIONID'] as String?,
-    );
-
-Map<String, dynamic> _$HttpCookieModelToJson(HttpCookieModel instance) =>
-    <String, dynamic>{
-      'JSESSIONID': instance.JSESSIONID,
-    };
-
 MessageBodyModel _$MessageBodyModelFromJson(Map<String, dynamic> json) =>
     MessageBodyModel(
       PostData: json['PostData'] as String?,

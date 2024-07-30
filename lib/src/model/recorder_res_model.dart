@@ -37,7 +37,7 @@ class RspRecorderGetProperty extends ResData {
 class RspRecorderGetPropertyRes {
   HttpRequestLineModel? httpRequestLine;
   HttpHeaderModel? httpHeader;
-  HttpCookieModel? httpCookie;
+  Map<String, dynamic>? httpCookie;
   MessageBodyModel? messageBody;
   TcpInformationModel? tcpInformation;
   String? message;
@@ -58,9 +58,7 @@ class RspRecorderGetPropertyRes {
         httpHeader = json['httpHeader'] != null
             ? HttpHeaderModel.fromJson(json['httpHeader'])
             : null,
-        httpCookie = json['httpCookie'] != null
-            ? HttpCookieModel.fromJson(json['httpCookie'])
-            : null,
+        httpCookie = json['httpCookie'],
         messageBody = json['messageBody'] != null
             ? MessageBodyModel.fromJson(json['messageBody'])
             : null,
@@ -73,7 +71,7 @@ class RspRecorderGetPropertyRes {
     var map = <String, dynamic>{};
     map['httpRequestLine'] = httpRequestLine?.toJson();
     map['httpHeader'] = httpHeader?.toJson();
-    map['httpCookie'] = httpCookie?.toJson();
+    map['httpCookie'] = httpCookie;
     map['messageBody'] = messageBody?.toJson();
     map['tcpInformation'] = tcpInformation?.toJson();
     map['message'] = message;
@@ -162,20 +160,6 @@ class HttpHeaderModel {
   String toString() {
     return toJson().toString();
   }
-}
-
-@JsonSerializable()
-class HttpCookieModel {
-  String? JSESSIONID;
-
-  HttpCookieModel({
-    this.JSESSIONID,
-  });
-
-  factory HttpCookieModel.fromJson(Map<String, dynamic> json) =>
-      _$HttpCookieModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$HttpCookieModelToJson(this);
 }
 
 @JsonSerializable()
